@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\EightMilesAPI",
-    "\\EightMilesAPI\\EightMilesAPI"
+    "\\EightMilesAPI\\EightMilesAPI",
+    "\\EightMilesAPI\\EightMilesAPI\\modules",
+    "\\EightMilesAPI\\EightMilesAPI\\modules\\controller",
+    "\\EightMilesAPI\\EightMilesAPI\\modules\\model"
   ],
-  "SelectedNode": "\\EightMilesAPI\\EightMilesAPI.sln",
+  "SelectedNode": "\\EightMilesAPI\\EightMilesAPI\\config.py",
   "PreviewInSolutionExplorer": false
 }
