@@ -13,7 +13,7 @@ class Users(Base):
     email   = Column(String(255))
     pwd     = Column(String(255))
     
-#    details = relationship('UserDetails', backref='details')
+    details = relationship('UserDetails', backref='details')
 
 class UserType(Base):
     __tablename__ = 'usertype'
@@ -31,12 +31,12 @@ class UserDetails(Base):
     __tablename__ = 'userdetails'
     detail_id       = Column(Integer, primary_key=True)
     fname           = Column(String(255))
-#   lname           = Column(String(255))
-#    mobile          = Column(String(255))
-#    telno           = Column(String(255))
-#    address         = Column(String(255))
-#    profile_image   = Column(String(255))
+    lname           = Column(String(255))
+    mobile          = Column(String(255))
+    telno           = Column(String(255))
+    address         = Column(String(255))
+    #profile_image   = Column(String(255))
 
-#    user_id     = Column(Integer, ForeignKey('users.user_id'))
+    user_id     = Column(Integer, ForeignKey('users.user_id'))
 #    type_id     = Column(Integer, ForeignKey('usertype.usrtype_id'))
 #    status_id   = Column(Integer, ForeignKey('userstatus.status_id'))
