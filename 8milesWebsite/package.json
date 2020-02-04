@@ -1,0 +1,27 @@
+{
+  "name": "8milesPortal",
+  "version": "1.0.0",
+  "description": "My brilliant Nuxt.js project",
+  "author": "Kennedy Sagarino",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.1.3",
+    "bootstrap-vue": "^2.0.0",
+    "jquery": "^3.4.1",
+    "js-cookie": "^2.2.1",
+    "nuxt": "^2.11.0",
+    "vue-gallery": "^2.0.1",
+    "vue-gallery-slideshow": "^1.5.0",
+    "vue-runtime-helpers": "^1.1.2",
+    "webpack-jquery-ui": "^2.0.1"
+  },
+  "devDependencies": {}
+}
