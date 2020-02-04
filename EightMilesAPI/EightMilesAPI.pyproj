@@ -31,6 +31,9 @@
     <Compile Include="config.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="modules\controller\sample.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="modules\model\usersmodel.py">
       <SubType>Code</SubType>
     </Compile>
