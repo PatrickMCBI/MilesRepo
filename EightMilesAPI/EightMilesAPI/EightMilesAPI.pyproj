@@ -16,8 +16,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>EightMilesAPI</Name>
     <RootNamespace>EightMilesAPI</RootNamespace>
-    <InterpreterId>
-    </InterpreterId>
+    <InterpreterId>MSBuild|api|$(MSBuildProjectFullPath)</InterpreterId>
     <WebBrowserPort>3000</WebBrowserPort>
     <Environment>Python36_64</Environment>
   </PropertyGroup>
