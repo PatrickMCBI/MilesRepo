@@ -1,7 +1,7 @@
 <template>
     <div>
            
-    <!--------------- HEADER NAV Kuya a --------------->
+    <!--------------- HEADER NAV Kuya as --------------->
     <b-navbar
       toggleable="lg"
       type="dark"
