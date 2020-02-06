@@ -18,7 +18,7 @@
     <RootNamespace>EightMilesAPI</RootNamespace>
     <InterpreterId>
     </InterpreterId>
-    <WebBrowserPort>5555</WebBrowserPort>
+    <WebBrowserPort>3000</WebBrowserPort>
     <Environment>Python36_64</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
