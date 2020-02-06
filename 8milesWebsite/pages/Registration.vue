@@ -41,7 +41,7 @@
                 <div class="col-md-6 pl-4" id="navbartabspword" style="display:none;">
                   <div class style>
                     <input
-                      type="password"
+                      type="passwors"
                       tabindex="2"
                       name="txt_flyingfrom"
                       id="txt_flyingfrom"
@@ -61,7 +61,7 @@
             </b-navbar-brand>
         
           </b-navbar-nav>
-        </b-collapse>
+      
       </div>
     </b-navbar>
 
