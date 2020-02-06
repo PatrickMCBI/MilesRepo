@@ -602,6 +602,7 @@
             <h5>Registration</h5>
           </b>
         </template>
+<<<<<<< HEAD
 
         <div class="row container pt-3">
           <div class="col-md-6">
@@ -668,13 +669,46 @@
                 id="txt_flyingto"
                 placeholder="REMARKS"
               />
+=======
+        <b-form >
+          <div class="row container pt-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="agencyName" placeholder="AGENCY NAME"/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="fullName" placeholder="FULLNAME" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control"  id="emailAddress" placeholder="EMAIL ADDRESS" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control"  id="contact" placeholder="CONTACT NO."/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="address" placeholder="ADDRESS" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input  type="text" class="form-control" id="remarks" placeholder="REMARKS"/>
+              </div>
+>>>>>>> bcc82d1ec486df3c0abf5f7dddbf088e66ac0872
             </div>
           </div>
-        </div>
+        </b-form>
 
         <template v-slot:modal-footer="{cancel }">
           <b-button size="sm" variant="danger" @click="cancel()">Cancel</b-button>
-          <b-button size="sm" variant="success" @click="ok()">Save</b-button>
+          <b-button type="submit" size="sm" variant="success" @click="save()">Save</b-button>
         </template>
       </b-modal>
 
@@ -776,6 +810,7 @@ export default {
             } else {
               Cookies.set("Uname", uname);
 
+<<<<<<< HEAD
               this.$router.push("Dashboard");
             }
           },
@@ -818,7 +853,69 @@ export default {
             document.documentElement.scrollTop = 0;
           }
         },
+=======
+    btn_sidebar() {
+      document.getElementById("sidebar").classList.toggle("sidebar-expand");
+      setTimeout(function() {
+        document
+          .getElementById("sidebar-content")
+          .classList.toggle("sidebar-content-show");
+      }, 200);
+    },
+    save(){
+      
+      console.log($('#agencyName').val())
+    },
+    ok() {
+  
+      this.$router.push("/");
+    },
+    PageName: function(event) {
+      var page = event.target.id;
+      $(".linavbar").removeClass("liactive");
+      $(event.target).addClass("liactive");
+      this.$router.push(page);
+    },
+    btnhidehome() {
+      var nh = document.getElementById("Navbarleft-home");
+      nh.classList.toggle("Navbarleft-home");
+    },
+    topfunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  },
+>>>>>>> bcc82d1ec486df3c0abf5f7dddbf088e66ac0872
   mounted() {
+
+    axios
+      .get(
+        
+        "http://localhost:5555/api/v1.0/users/"
+      )
+    
+      .then(response => {
+        
+           console.log(response.data)
+        // for (var z = 0; z < response.data.data.length; z++) {
+        //   var test = {};
+        //   test.id = response.data.data[z].id;
+        //   console.log(test.id)
+          // var imageLink = require("../assets/img/TopDestination/" +
+          //   test.id +
+          //   ".jpg");
+          // var imgEL = '<img src="' + imageLink + '" class="img-fluid">';
+          // this.images_topdestination.push(imageLink);
+        // }
+      });
+
+
+
+
+
+    
+    
+    
     var lcookie = Cookies.get("Uname");
     if (typeof lcookie === "undefined") {
       this.$router.push("/");
@@ -830,7 +927,9 @@ export default {
       .get(
         "https://raw.githubusercontent.com/clavearnel/philippines-region-province-citymun-brgy/master/json/refregion.json"
       )
+    
       .then(response => {
+        // console.log(response.data)
         for (var z = 0; z < response.data.RECORDS.length; z++) {
           var test = {};
           test.id = response.data.RECORDS[z].id;

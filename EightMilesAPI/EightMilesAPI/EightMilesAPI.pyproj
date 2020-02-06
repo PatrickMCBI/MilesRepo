@@ -18,6 +18,8 @@
     <RootNamespace>EightMilesAPI</RootNamespace>
     <InterpreterId>
     </InterpreterId>
+    <WebBrowserPort>5555</WebBrowserPort>
+    <Environment>Python36_64</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +49,7 @@
     <Folder Include="modules\controller\" />
     <Folder Include="modules\helpers\" />
     <Folder Include="modules\model\" />
+    <Folder Include="sp\" />
     <Folder Include="routes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />

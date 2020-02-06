@@ -12,37 +12,27 @@ from modules.model.usersmodel import *
 Create API function here
 """
 
+def escapestring(str):
+    return str.replace("'","''")
 
 def new_user():
-    data = request.get_json()
-    print("-----------", data)
-    is_exist = Users.query.filter_by(email=data['email']).first()
+
+    formData = request.get_json()
+    email = formData['email']
+    pasw = formData['pwd']
+    is_exist = Users.query.filter_by(email=email).first()
     if not is_exist:
-        user = Users(email=data['email'], pwd=data['pwd'])
-        detail = UserDetails(
-            fname           = data['fname'],
-            lname           = data['lname'],
-            mobile          = data['mobile'],
-            telno           = data['telno'],
-            address         = data['address'],
-            #profile_image   = data['profile_image'],
-            details         = user,
-            #type_id         = data['type_id'],
-            #status_id       = data['status_id']
-        )
-
-        db_session.add(user)
-        db_session.add(detail)
-
+        query = "CALL spInserUser('" +email+ "','" +escapestring(pasw)+ "')"
         try:
-            db_session.commit()
+            db_session.execute(query)
             status = Status('200', 'Successfully Added New User!')
             return status.status_code()
         except:
-            return Status('203', 'Something went wront, pls try again later!').status_code()
+           return Status('203', 'Something went wront, pls try again later!').status_code()
     else:
         return Status('204', 'User already exist!').status_code()
-
+   
+    
 def get_single_user(id):
     user = Users.query.filter_by(user_id=id).first()
     data = serialize_data(user)
@@ -53,13 +43,16 @@ def get_single_user(id):
         return Status('404', 'User not found!').status_code()
 
 def get_all_users():
-    return ''
+
+    query = "CALL spUsers()"
+    data = [dict(zip(r.keys(), r)) for r in db_session.execute(query).fetchall()]
+    return Status('200', 'Ok', data).status_code()
 
 def get_user_details(id):
-    detail = UserDetails.query.filter_by(detail_id=id).first()
-    data = serialize_detail(detail)
-
-    if detail:
+    query = "CALL spGetUserDetails("+id+")"
+    data = [dict(zip(r.keys(), r)) for r in db_session.execute(query).fetchall()]
+    
+    if data:
         return Status('200', 'Ok', data).status_code()        
     else:
         return Status('404', 'Ok').status_code()
@@ -67,7 +60,6 @@ def get_user_details(id):
 def update_user_details(id):
     user_detail = UserDetails.query.get(id)
     data = serialize_detail(user_detail)
-    print("-----",data)
   
     return ''
 

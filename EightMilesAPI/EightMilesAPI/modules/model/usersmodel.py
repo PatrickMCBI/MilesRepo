@@ -13,7 +13,7 @@ class Users(Base):
     email   = Column(String(255))
     pwd     = Column(String(255))
     
-    details = relationship('UserDetails', backref='details')
+    #details = relationship('UserDetails', backref='details')
 
 class UserType(Base):
     __tablename__ = 'usertype'
