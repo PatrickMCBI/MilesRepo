@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 from modules.helpers.database import Base
 
 class Users(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'usersaccount'
     user_id = Column(Integer, primary_key=True)
     email   = Column(String(255))
     pwd     = Column(String(255))
@@ -16,10 +16,10 @@ class Users(Base):
     #details = relationship('UserDetails', backref='details')
 
 class UserType(Base):
-    __tablename__ = 'usertype'
+    __tablename__ = 'userstype'
     usrtype_id  = Column(Integer, primary_key=True)
-    usrtype     = Column(Integer)
-    desc        = Column(String(255))
+    #usrtype     = Column(Integer)
+    userTypeName        = Column(String(255))
 
 class UserStatus(Base):
     __tablename__ = 'userstatus'
@@ -37,6 +37,6 @@ class UserDetails(Base):
     address         = Column(String(255))
     #profile_image   = Column(String(255))
 
-    user_id     = Column(Integer, ForeignKey('users.user_id'))
-#    type_id     = Column(Integer, ForeignKey('usertype.usrtype_id'))
+    user_id     = Column(Integer, ForeignKey('usersaccount.user_id'))
+    type_id     = Column(Integer, ForeignKey('userstype.usrtype_id'))
 #    status_id   = Column(Integer, ForeignKey('userstatus.status_id'))
