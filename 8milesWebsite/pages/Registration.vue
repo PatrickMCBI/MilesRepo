@@ -1,7 +1,7 @@
 <template>
     <div>
            
-    <!--------------- HEADER NAV s --------------->
+    <!--------------- HEADER NAV --------------->
     <b-navbar
       toggleable="lg"
       type="dark"
