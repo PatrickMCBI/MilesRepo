@@ -1,16 +1,15 @@
 <template>
-  <div class="container" style="height:150em;">
+  <div class="container">
     
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 
 export default {
     layout: "MainLayout",
   components: {
-    Logo
+    
   }
 }
 </script>

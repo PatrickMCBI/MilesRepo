@@ -64,14 +64,7 @@
                 style="width:10em; font-color:0.5em; height:2em; background-color:#3b5998; border:0px solid red; border-radius:4px; color:white"
               >SIGN IN</button>
             </div>
-            <div class="mt-3" style="width:100%; color:#e9a14d; margin-top:3.2em !important; ">
-              <a class="pl-2" href style="font-size:12px !important; float:left;">Forgot Password?</a>
-              <a
-                v-b-modal.modal-register
-                class="pr-2"
-                style=" font-size:12px !important; float:right !important; color:red !important;"
-              >New User?</a>
-            </div>
+          
           </div>
           <!--------------- SOCIAL MEDIA --------------->
           <div>
@@ -158,7 +151,9 @@
     <h2 id="div_destination" class="font-weight-light text-black container mt-5">Top Destinations</h2>
     <p class="color-black-opacity-5 container mt-2">Choose Your Next Destination</p>
     <div class="row mt-5 container" style="width:100%;   ">
+       <no-ssr placeholder="loading...">
       <gallery :images="images_topdestination" :index="index" @close="index = null"></gallery>
+       </no-ssr>
       <div
         class="image col-sm-3"
         v-for="(image, imageIndex) in images_topdestination"

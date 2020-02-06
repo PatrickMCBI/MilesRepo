@@ -139,6 +139,7 @@
     width: 6.5em;
     text-align: center;
     font: 12px"Poppins", sans-serif;
+    cursor: pointer;
 }
 
 .linavbarlogins {
@@ -191,6 +192,19 @@ html {
     cursor: pointer;
     border-width: 2px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #return-to-top:hover {
     color: #d9534f;
@@ -268,7 +282,13 @@ body {
 .botfooter {
     margin-bottom: 2.5em;
 }
-
+.botfooterchat {
+    margin-bottom: 2.5em;
+    margin-right: 2.5em;
+}
+.viewchat{
+    display:block !important;
+}
 #Footer-content {
     border: 0px solid red;
     height: 3em;
@@ -555,6 +575,104 @@ body {
     background-color: rgba(136, 136, 136, 0.178);
 }
 
+
+
+
+/*-----------------  Inquiries -----------------*/
+
+#return-to-topchat {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    font-size: 18px;
+    cursor: pointer;
+    border-width: 2px;
+    border:1px solid red;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    bottom: 7px;
+    border: 0;
+    outline: 0;
+    border-radius: 60px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    -ms-border-radius: 60px;
+    -o-border-radius: 60px;
+    box-shadow: 2px 0px 5px 0px rgb(24, 23, 23);
+    -webkit-transition: box-shadow .2s ease;
+    background-size: 80%;
+    transition: all .2s ease-in-out;    
+}
+#return-to-topchat:hover {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    font-size: 18px;
+    cursor: pointer;
+    border-width: 2px;
+    border:1px solid red;
+    z-index: 1;
+  
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    bottom: 7px;
+    border: 0;
+    outline: 0;
+    border-radius: 60px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    -ms-border-radius: 60px;
+    -o-border-radius: 60px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.06), 0 2px 32px rgba(0,0,0,.16);
+    -webkit-transition: box-shadow .2s ease;
+    background-size: 80%;
+    transition: all .2s ease-in-out;    
+    }
+    .fb-widget {
+        background: #fff;
+        z-index: 2;
+        position: fixed;
+        width: 360px;
+        height: 435px;
+        overflow: hidden;
+        opacity: 0;
+        bottom: 4px;
+        right: 24px;
+        border-radius: 6px;
+        -o-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        box-shadow: 0 5px 40px rgba(0,0,0,.16);
+        -webkit-box-shadow: 0 5px 40px rgba(0,0,0,.16);
+        -moz-box-shadow: 0 5px 40px rgba(0,0,0,.16);
+        -o-box-shadow: 0 5px 40px rgba(0,0,0,.16);
+    }
+    
+    .fb-widget {
+        bottom: 70px !important;
+    }
+
+.ctrlq.fb-close {
+    z-index: 4;
+    padding: 0 6px;
+    background: #365899;
+    font-weight: 900;
+    font-size: 15px;
+    color: #fff;
+    margin: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.ctrlq.fb-close {
+    position: fixed;
+    right: 40px;
+    cursor: pointer;
+}
 
 /*-----------------  Service Offered -----------------*/
 
