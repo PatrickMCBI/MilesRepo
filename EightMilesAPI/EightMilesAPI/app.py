@@ -6,6 +6,7 @@ from flask_sqlalchemy import get_debug_queries
 
 # from version import *
 from routes.usersroute import usersapi
+from routes.milesSettingRoute import settingapi
 
 
 
@@ -19,6 +20,7 @@ Blueprint is structuring the api's
 wsgi_app = app.wsgi_app
 
 app.register_blueprint(usersapi, url_prefix=api_version)
+app.register_blueprint(settingapi, url_prefix=api_version)
 
 
 if __name__ == '__main__':
