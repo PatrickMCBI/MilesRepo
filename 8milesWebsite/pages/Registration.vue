@@ -1,15 +1,13 @@
 <template>
     <div>
            
-    <!--------------- HEADER NAV --------------->
+    <!--------------- HEADER NAV s --------------->
     <b-navbar
       toggleable="lg"
       type="dark"
       variant="white"
       id="Header-content"
       class="Header-content">
-    
-     
       <div class="container">
         <b-navbar-brand>
           <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt />
