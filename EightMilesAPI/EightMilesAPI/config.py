@@ -11,8 +11,8 @@ ENVIRONMENT = {
     'dev':{
         #mysql
         'DBHOST' : '127.0.0.1:3306',
-        #'DBNAME' : 'db_8mileswebsite',
-        'DBNAME' : '8miles',
+        'DBNAME' : 'db8mileswebsite',
+        #'DBNAME' : '8miles',
         'DBUSER' : 'root',
         'DBPASS' : ''
     },

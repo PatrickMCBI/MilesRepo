@@ -106,8 +106,8 @@
         <i class="material-icons social-icon-login" style="cursor:pointer; font-size:.8em;">person</i> LOGIN
       </button>
       <div class="container">
-        <b-navbar-brand>
-          <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt />
+        <b-navbar-brand id="8mileslogo">
+          <!-- <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt /> -->
         </b-navbar-brand>
         <b-navbar-toggle id="btntoggler" target="nav-collapse" style="background-color:#e8eef3; "></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav style="margin-right:8em;">
@@ -825,6 +825,30 @@ export default {
     } else {
       this.$router.push("dashboard");
     }
+    // -------------------- 8milesSettings ------------------------
+    axios
+      .get(
+        "http://localhost:5555/api/v1.0/setting/"
+      )
+      .then(response => {
+        console.log(response.data.data[0].logo)
+        
+        var imageLink = require("../assets/img/" + response.data.data[0].logo);
+         var imgEL = '<img src="' + imageLink + '" class="img-fluid img-leftlogo">'
+                   $('#8mileslogo').append(imgEL);
+       
+       
+       
+       
+       // for (var z = 0; z < 1; z++) {
+        //   var test = {};
+        //   test.logo = response.data.logo[z];
+        //   alert(test.logo);
+        //  var imageLink = require('../assets/img/8mileslogo.png');
+        //  var imgEL = '<img src="' + imageLink + '" class="img-fluid img-leftlogo">'
+        //            $('#8mileslogo').append(imgEL);
+        // }
+      });
     // -------------------- Top Destination ------------------------
     axios
       .get(
@@ -834,8 +858,7 @@ export default {
         for (var z = 0; z < response.data.RECORDS.length; z++) {
           var test = {};
           test.id = response.data.RECORDS[z].id;
-          var imageLink = require("../assets/img/TopDestination/" +
-            test.id +
+          var imageLink = require("../assets/img/TopDestination/" + test.id +
             ".jpg");
           var imgEL = '<img src="' + imageLink + '" class="img-fluid">';
           this.images_topdestination.push(imageLink);
