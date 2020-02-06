@@ -18,7 +18,7 @@
     <RootNamespace>EightMilesAPI</RootNamespace>
     <InterpreterId>
     </InterpreterId>
-    <WebBrowserPort>5555</WebBrowserPort>
+    <WebBrowserPort>3000</WebBrowserPort>
     <Environment>Python36_64</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -34,7 +34,13 @@
     <Compile Include="config.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="modules\controller\milesSettingController.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="modules\model\usersmodel.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\milesSettingRoute.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes\usersroute.py">
@@ -51,6 +57,17 @@
     <Folder Include="modules\model\" />
     <Folder Include="sp\" />
     <Folder Include="routes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="api\">
+      <Id>api</Id>
+      <Version>3.7</Version>
+      <Description>api (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
