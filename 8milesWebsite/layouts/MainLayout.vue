@@ -591,85 +591,44 @@
             <h5>Registration</h5>
           </b>
         </template>
-
-        <div class="row container pt-3">
-          <div class="col-md-6">
-            <div class="form-group">
-              <!-- <label for id="secORdti" style="float:left;">Flying From</label> -->
-              <input
-                type="text"
-                name="txt_flyingfrom"
-                class="form-control"
-                id="txt_flyingfrom"
-                placeholder="AGENCY NAME"
-              />
+        <b-form >
+          <div class="row container pt-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="agencyName" placeholder="AGENCY NAME"/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="fullName" placeholder="FULLNAME" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control"  id="emailAddress" placeholder="EMAIL ADDRESS" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control"  id="contact" placeholder="CONTACT NO."/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="address" placeholder="ADDRESS" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input  type="text" class="form-control" id="remarks" placeholder="REMARKS"/>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <!-- <label for id="secORdti" style="float:left;">Flying From</label> -->
-              <input
-                type="text"
-                name="txt_flyingfrom"
-                class="form-control"
-                id="txt_flyingfrom"
-                placeholder="FULLNAME"
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <!-- <label for style="float:left;">Flying To</label> -->
-              <input
-                type="text"
-                class="form-control"
-                name="txt_flyingto"
-                id="txt_flyingto"
-                placeholder="EMAIL ADDRESS"
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <!-- <label for style="float:left;">Flying To</label> -->
-              <input
-                type="text"
-                class="form-control"
-                name="txt_flyingto"
-                id="txt_flyingto"
-                placeholder="MOBILE / TEL. #"
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <!-- <label for style="float:left;">Flying To</label> -->
-              <input
-                type="text"
-                class="form-control"
-                name="txt_flyingto"
-                id="txt_flyingto"
-                placeholder="ADDRESS"
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <!-- <label for style="float:left;">Flying To</label> -->
-              <input
-                type="text"
-                class="form-control"
-                name="txt_flyingto"
-                id="txt_flyingto"
-                placeholder="REMARKS"
-              />
-            </div>
-          </div>
-        </div>
+        </b-form>
 
         <template v-slot:modal-footer="{cancel }">
           <b-button size="sm" variant="danger" @click="cancel()">Cancel</b-button>
-          <b-button size="sm" variant="success" @click="ok()">Save</b-button>
+          <b-button type="submit" size="sm" variant="success" @click="save()">Save</b-button>
         </template>
       </b-modal>
 
@@ -769,6 +728,10 @@ export default {
           .classList.toggle("sidebar-content-show");
       }, 200);
     },
+    save(){
+      
+      console.log($('#agencyName').val())
+    },
     ok() {
   
       this.$router.push("/");
@@ -789,6 +752,35 @@ export default {
     }
   },
   mounted() {
+
+    axios
+      .get(
+        
+        "http://localhost:5555/api/v1.0/users/"
+      )
+    
+      .then(response => {
+        
+           console.log(response.data)
+        // for (var z = 0; z < response.data.data.length; z++) {
+        //   var test = {};
+        //   test.id = response.data.data[z].id;
+        //   console.log(test.id)
+          // var imageLink = require("../assets/img/TopDestination/" +
+          //   test.id +
+          //   ".jpg");
+          // var imgEL = '<img src="' + imageLink + '" class="img-fluid">';
+          // this.images_topdestination.push(imageLink);
+        // }
+      });
+
+
+
+
+
+    
+    
+    
     var lcookie = Cookies.get("Uname");
     if (typeof lcookie === "undefined") {
       this.$router.push("/");
@@ -800,7 +792,9 @@ export default {
       .get(
         "https://raw.githubusercontent.com/clavearnel/philippines-region-province-citymun-brgy/master/json/refregion.json"
       )
+    
       .then(response => {
+        // console.log(response.data)
         for (var z = 0; z < response.data.RECORDS.length; z++) {
           var test = {};
           test.id = response.data.RECORDS[z].id;

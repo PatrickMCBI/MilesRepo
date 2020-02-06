@@ -5,8 +5,10 @@
     "\\EightMilesAPI\\EightMilesAPI",
     "\\EightMilesAPI\\EightMilesAPI\\modules",
     "\\EightMilesAPI\\EightMilesAPI\\modules\\controller",
-    "\\EightMilesAPI\\EightMilesAPI\\modules\\model"
+    "\\EightMilesAPI\\EightMilesAPI\\modules\\helpers",
+    "\\EightMilesAPI\\EightMilesAPI\\modules\\model",
+    "\\EightMilesAPI\\EightMilesAPI\\routes"
   ],
-  "SelectedNode": "\\EightMilesAPI\\EightMilesAPI\\config.py",
+  "SelectedNode": "\\EightMilesAPI\\EightMilesAPI\\modules\\controller\\userscontroller.py",
   "PreviewInSolutionExplorer": false
 }

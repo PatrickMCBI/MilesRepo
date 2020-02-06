@@ -11,6 +11,7 @@ ENVIRONMENT = {
     'dev':{
         #mysql
         'DBHOST' : '127.0.0.1:3306',
+        #'DBNAME' : 'db_8mileswebsite',
         'DBNAME' : '8miles',
         'DBUSER' : 'root',
         'DBPASS' : ''
@@ -22,7 +23,7 @@ ENVIRONMENT = {
         'DBPASS' : ''
     }
 }
-
+#HOST = {'HOST':'127.0.0.1', 'PORT':3000}
 DBNAME = ENVIRONMENT[ENV]['DBNAME']
 DBHOST = ENVIRONMENT[ENV]['DBHOST']
 DBUSER = ENVIRONMENT[ENV]['DBUSER']

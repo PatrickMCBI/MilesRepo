@@ -1,14 +1,17 @@
 from flask import Flask
 #from config import HOST
+from flask_cors import CORS
 
 from flask_sqlalchemy import get_debug_queries
 
 # from version import *
 from routes.usersroute import usersapi
 
+
+
 app = Flask(__name__)
 api_version = '/api/v1.0'
-
+CORS(app)
 """
 Blueprint is structuring the api's
 """
@@ -24,10 +27,11 @@ if __name__ == '__main__':
 
     import os
     HOST = os.environ.get('SERVER_HOST', 'localhost')
+    
     try:
-        PORT = int(os.environ.get('SERVER_PORT', '5555'))
+       PORT = int(os.environ.get('SERVER_PORT', '5555'))
     except ValueError:
-        PORT = 5555
+       PORT = 5555
     
     app.debug = True
     app.run(HOST, PORT)
