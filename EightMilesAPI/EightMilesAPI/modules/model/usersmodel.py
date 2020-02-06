@@ -18,8 +18,8 @@ class Users(Base):
 class UserType(Base):
     __tablename__ = 'userstype'
     usrtype_id  = Column(Integer, primary_key=True)
-    usrtype     = Column(Integer)
-    desc        = Column(String(255))
+    #usrtype     = Column(Integer)
+    userTypeName        = Column(String(255))
 
 class UserStatus(Base):
     __tablename__ = 'userstatus'
@@ -38,5 +38,5 @@ class UserDetails(Base):
     #profile_image   = Column(String(255))
 
     user_id     = Column(Integer, ForeignKey('usersaccount.user_id'))
-#    type_id     = Column(Integer, ForeignKey('usertype.usrtype_id'))
+    type_id     = Column(Integer, ForeignKey('userstype.usrtype_id'))
 #    status_id   = Column(Integer, ForeignKey('userstatus.status_id'))
