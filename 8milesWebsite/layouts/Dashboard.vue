@@ -1,5 +1,6 @@
 <template >
   <div id="app1">
+
     <!--------------- LINK --------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
@@ -147,6 +148,18 @@
         </b-collapse>
       </div>
     </b-navbar>
+
+
+
+<div id="mydiv" >
+  <div id="mydivheader">LOGO</div>
+  <div style="height:15em;">Move</div>
+
+</div>
+
+
+
+
     <div class="parallax"></div>
     <h2 id="div_destination" class="font-weight-light text-black container mt-5">Top Destinations</h2>
     <p class="color-black-opacity-5 container mt-2">Choose Your Next Destination</p>
@@ -658,9 +671,28 @@
   </div>
 </template>
 
+<style >
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  width:40%;
+  box-shadow: 2px 0px 3px 0px rgb(24, 23, 23);
+}
 
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+</style>
 <!-----------------   SCRIPTS  ------------------>
 <script>
+
 import axios from "axios";
 import Cookies from "js-cookie";
 import $ from "jquery";
@@ -733,6 +765,50 @@ export default {
     }
   },
   mounted() {
+               dragElement(document.getElementById("mydiv"));
+
+                                function dragElement(elmnt) {
+                                  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                                  if (document.getElementById(elmnt.id + "header")) {
+                                    // if present, the header is where you move the DIV from:
+                                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+                                  } else {
+                                    // otherwise, move the DIV from anywhere inside the DIV:
+                                    elmnt.onmousedown = dragMouseDown;
+                                  }
+
+                                  function dragMouseDown(e) {
+                                    e = e || window.event;
+                                    e.preventDefault();
+                                    // get the mouse cursor position at startup:
+                                    pos3 = e.clientX;
+                                    pos4 = e.clientY;
+                                    document.onmouseup = closeDragElement;
+                                    // call a function whenever the cursor moves:
+                                    document.onmousemove = elementDrag;
+                                  }
+
+                                  function elementDrag(e) {
+                                    e = e || window.event;
+                                    e.preventDefault();
+                                    // calculate the new cursor position:
+                                    pos1 = pos3 - e.clientX;
+                                    pos2 = pos4 - e.clientY;
+                                    pos3 = e.clientX;
+                                    pos4 = e.clientY;
+                                    // set the element's new position:
+                                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                                  }
+
+                                  function closeDragElement() {
+                                    // stop moving when mouse button is released:
+                                    document.onmouseup = null;
+                                    document.onmousemove = null;
+                                  }
+                                }
+
+
     var Uname = Cookies.get("Uname");
 
     if (typeof Uname === "undefined") {
