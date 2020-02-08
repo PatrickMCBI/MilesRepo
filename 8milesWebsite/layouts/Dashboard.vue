@@ -3,6 +3,7 @@
 
 
 
+
     <!---------------   LINK   --------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -38,8 +39,6 @@
             <b-button>Contact</b-button>
           </b-button-group>
         </div>
-        
-    
 
 
 
@@ -52,7 +51,6 @@
         <b-navbar-brand>
           <!-- <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt /> -->
           <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" v-bind:style="{ width: widthSize + 'em !important' }" alt />
-          
         </b-navbar-brand>
         <b-navbar-toggle id="btntoggler" target="nav-collapse" style="background-color:#e8eef3; "></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav style="margin-right:8em;">
@@ -76,21 +74,19 @@
     </b-navbar>
 
 
+
  <!-- --------------------   Dragable Div   ------------------------ -->
  <div id="Dragable_div">
     <div id="Dragable_Logo" > 
-      <div id="mydivheader">LOGO</div>
-    
-      <div class="Dragable_content">
-        
-            
-            <h6>Default like value: {{ slider2 }}</h6>
-            <div style="border:1px solid red; height:em; color">
-            <label id="lblslide"  ></label></div> 
-            <input id="In_slider2" v-model="slider2" placeholder="edit me">
-            <custom-slider v-on:change="search" min="0" max="50" step="1" v-model="slider2"/>
-
-      </div>
+            <div id="mydivheader">LOGO</div>
+            <div class="Dragable_content">
+              Resize Logo
+                  <custom-slider v-on:change="search" min="0" max="50" step="1" v-model="slider2"/> <label id="lblslide"  ></label>
+                <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                  Change Logo
+                  
+              <input class="mt-4" style="margin-left:17%" type="file" name="pic" accept="image/*">
+            </div>
        </div>
  </div>
 
@@ -133,8 +129,6 @@
     <div class="container text-center">
     <div class="" id="div_servicesoffered" style="width:100%; ">
       <h2 class="font-weight-hard-servicesoffered text-black container text-center" style="color:#0b464c !important;" >SERVICES OFFERED</h2>
-      
-      
       <div class="row container mt-5 text-center" style="width:80%; border:0px solid red; margin:auto;">
         <div class="col-sm-4">
           <h3 class="custom-text">Reservations</h3>
@@ -149,8 +143,6 @@
           <p style="font-size: 13px;">Online Passport Reservation, Red Ribbon, NSO Online Application. Tourist Visa Application</p>
         </div>
       </div>
-
-
       <div class="row container mt-4" style="width:80%; border:0px solid red; margin:auto;">
         <div class="col-sm-3">
           <img
@@ -586,34 +578,8 @@ export default {
       images_topdestination: [],
       index: null,
       Cname: null,
-                
-                   slider: "a",
       slider2: "0",
-     value:"",
-      sliderValues:  
-            [
-                    {
-                      label: "Not at all",
-                      value:  "a",
-                      
-                    },
-                    {
-                      label: "A tiny bit",
-                      value: "b"
-                    },
-                    {
-                      label: "Its ok",
-                      value: "c"
-                    },
-                    {
-                      label: "Its very good",
-                      value: "d"
-                    },
-                    {
-                      label: "Its AMAZING!",
-                      value: "e"
-                    }
-            ]  ,     
+          
     };
   },
   methods: {
@@ -679,50 +645,50 @@ export default {
   },
   mounted() {
             
-          //  var slide= $("#In_slider2").val();
-          // alert(slide);
-               dragElement(document.getElementById("Dragable_Logo"));
 
-                                function dragElement(elmnt) {
-                                  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                                  if (document.getElementById(elmnt.id + "header")) {
-                                    // if present, the header is where you move the DIV from:
-                                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-                                  } else {
-                                    // otherwise, move the DIV from anywhere inside the DIV:
-                                    elmnt.onmousedown = dragMouseDown;
-                                  }
+              //  dragElement(document.getElementById("Dragable_Logo"));
 
-                                  function dragMouseDown(e) {
-                                    e = e || window.event;
-                                    e.preventDefault();
-                                    // get the mouse cursor position at startup:
-                                    pos3 = e.clientX;
-                                    pos4 = e.clientY;
-                                    document.onmouseup = closeDragElement;
-                                    // call a function whenever the cursor moves:
-                                    document.onmousemove = elementDrag;
-                                  }
+              //                   function dragElement(elmnt) {
+              //                     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+              //                     if (document.getElementById(elmnt.id + "header")) {
+                                 
+              //                       document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+              //                     } else {
+                                  
+              //                       elmnt.onmousedown = dragMouseDown;
+              //                     }
 
-                                  function elementDrag(e) {
-                                    e = e || window.event;
-                                    e.preventDefault();
-                                    // calculate the new cursor position:
-                                    pos1 = pos3 - e.clientX;
-                                    pos2 = pos4 - e.clientY;
-                                    pos3 = e.clientX;
-                                    pos4 = e.clientY;
-                                    // set the element's new position:
-                                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                                  }
+              //                     function dragMouseDown(e) {
+              //                       e = e || window.event;
+              //                       e.preventDefault();
+                                
+              //                       pos3 = e.clientX;
+              //                       pos4 = e.clientY;
+              //                       document.onmouseup = closeDragElement;
+                                
+              //                       document.onmousemove = elementDrag;
+              //                     }
 
-                                  function closeDragElement() {
-                                    // stop moving when mouse button is released:
-                                    document.onmouseup = null;
-                                    document.onmousemove = null;
-                                  }
-                                }
+              //                     function elementDrag(e) {
+              //                       e = e || window.event;
+              //                       e.preventDefault();
+                                   
+              //                       pos1 = pos3 - e.clientX;
+              //                       pos2 = pos4 - e.clientY;
+              //                       pos3 = e.clientX;
+              //                       pos4 = e.clientY;
+                                
+              //                       elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+              //                       elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+              //                     }
+
+              //                     function closeDragElement() {
+                                   
+              //                       document.onmouseup = null;
+              //                       document.onmousemove = null;
+              //                     }
+              //                   }
+
 
 
     var Uname = Cookies.get("Uname");
