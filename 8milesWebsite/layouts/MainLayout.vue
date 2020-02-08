@@ -1,5 +1,9 @@
 <template >
-  <div id="app">
+
+  <div id="apps">
+ 
+        <link href="../css/custom.css" rel="stylesheet" />
+  
     <!--------------- LINK --------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -716,19 +720,22 @@
         </template>
       </b-modal>
     </div>
+    
   </div>
 </template>
-
+<style  src="@/assets/css/custom.css">
+</style>
 
 <!-----------------   SCRIPTS  ------------------>
 <script>
-require('@/assets/css/custom.css')
+// import('@/assets/css/custom.css')
+// ('@/assets/css/custom.css')
 import axios from "axios";
 import Cookies from "js-cookie";
 import $ from "jquery";
 import VueGallery from "vue-gallery-slideshow";
 export default {
-  name: "app",
+  name: "apps",
   components: { gallery: VueGallery },
   data() {
     return {
