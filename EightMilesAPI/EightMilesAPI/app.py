@@ -7,6 +7,7 @@ from flask_sqlalchemy import get_debug_queries
 # from version import *
 from routes.usersroute import usersapi
 from routes.milesSettingRoute import settingapi
+from routes.colorCodeRoute import colorCodeApi
 
 
 
@@ -21,6 +22,7 @@ wsgi_app = app.wsgi_app
 
 app.register_blueprint(usersapi, url_prefix=api_version)
 app.register_blueprint(settingapi, url_prefix=api_version)
+app.register_blueprint(colorCodeApi, url_prefix=api_version)
 
 
 if __name__ == '__main__':
@@ -34,6 +36,6 @@ if __name__ == '__main__':
        PORT = int(os.environ.get('SERVER_PORT', '5555'))
     except ValueError:
        PORT = 5555
-    1
+    
     app.debug = True
     app.run(HOST, PORT)

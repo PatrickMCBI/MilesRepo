@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\FGM\Desktop\VUE\MilesRepo\EightMilesAPI\EightMilesAPI\api"
+$env:VIRTUAL_ENV="C:\Users\User 1\Desktop\MilesRepo\EightMilesAPI\EightMilesAPI\api"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

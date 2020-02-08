@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\FGM\Desktop\VUE\MilesRepo\EightMilesAPI\EightMilesAPI\api
+set VIRTUAL_ENV=C:\Users\User 1\Desktop\MilesRepo\EightMilesAPI\EightMilesAPI\api
 
 if not defined PROMPT set PROMPT=$P$G
 

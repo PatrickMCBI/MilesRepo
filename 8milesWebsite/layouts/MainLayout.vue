@@ -720,22 +720,6 @@
 </template>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-----------------   SCRIPTS  ------------------>
 <script>
 require('@/assets/css/custom.css')
@@ -956,8 +940,6 @@ export default {
 
       $(".digital-clock").text("Time: " + h + ":" + m + ":" + s);
     }
-
-
     setTimeout(function() {
       document.getElementById("preloader").style.opacity = 0.2;
     }, 1990);

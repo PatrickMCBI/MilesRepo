@@ -17,7 +17,7 @@
     <Name>EightMilesAPI</Name>
     <RootNamespace>EightMilesAPI</RootNamespace>
     <InterpreterId>MSBuild|api|$(MSBuildProjectFullPath)</InterpreterId>
-    <WebBrowserPort>3000</WebBrowserPort>
+    <WebBrowserPort>5555</WebBrowserPort>
     <Environment>Python36_64</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -33,10 +33,16 @@
     <Compile Include="config.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="modules\controller\colorCodeController.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="modules\controller\milesSettingController.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="modules\model\usersmodel.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\colorCodeRoute.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes\milesSettingRoute.py">
