@@ -723,24 +723,8 @@
     
   </div>
 </template>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style  src="@/assets/css/custom.css">
 </style>
-
-
-
 
 <!-----------------   SCRIPTS  ------------------>
 <script>
@@ -963,8 +947,6 @@ export default {
 
       $(".digital-clock").text("Time: " + h + ":" + m + ":" + s);
     }
-
-
     setTimeout(function() {
       document.getElementById("preloader").style.opacity = 0.2;
     }, 1990);
