@@ -24,33 +24,34 @@
 
     <!---------------   SIDEBAR   --------------->
     <div id="sidebar" >
-      <div style="border:1px solid #FFF;  height:5em;">
-          <i class='fas fa-wrench ml-4 mt-4' style='font-size:40px'></i>
-      </div>
+     <div style="border:1px solid #FFF;  height:5em;">
+         <i class='fas fa-wrench ml-4 mt-4' style='font-size:40px'></i>
+     </div>
 
-      <b-button-group vertical style="width:4.5em; left:5px; " >
-        <b-button @click="logo" title="LOGO">Logo</b-button>
-        <b-button>Header</b-button>
-        <b-button>Cover</b-button>
-        <b-button>Destination</b-button>
-        <b-button>Partners</b-button>
-        <b-button>Services</b-button>
-        <b-button>Promo</b-button>
-        <b-button>Contact</b-button>
-      </b-button-group>
-    </div>
+          <b-button-group vertical style="width:4.5em; left:5px; " >
+            <b-button @click="logo" title="LOGO" style="margin-top:2em;">Logo</b-button>
+            <b-button @click="Header">Header</b-button>
+            <b-button>Cover</b-button>
+            <b-button>Destination</b-button>
+            <b-button>Partners</b-button>
+            <b-button>Services</b-button>
+            <b-button>Promo</b-button>
+            <b-button>Contact</b-button>
+          </b-button-group>
+        </div>
 
 
-    
+
     <!---------------   NAVBAR   --------------->
-    <b-navbar toggleable="lg" type="dark" variant="white" id="Header-content" class="Header-content">
+    <b-navbar toggleable="lg" type="dark" variant="white" id="Header-content" class="Header-content" v-bind:style="{ backgroundColor: Update_Header + '!important' }" >
       <button class @click="btn_sidebar" id="btn-sidebar" style="display:none;">
         <i class="material-icons social-icon-login" style="cursor:pointer; font-size:8em;">person</i> LOGIN
       </button>
       <div class="container">
         <b-navbar-brand>
           <!-- <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt /> -->
-          <img src="../assets/img/8Miles_Travel_Corp.png" id="img-resize" class="img-fluid img-leftlogo" v-bind:style="{ width: widthSize + 'em !important' }" alt />
+          <img src="../assets/img/8Miles_Travel_Corp.png" id="img-resize" class="img-fluid img-leftlogo" v-bind:style="{ width: Update_width + 'em !important' }" alt />
+
         </b-navbar-brand>
         <b-navbar-toggle id="btntoggler" target="nav-collapse" style="background-color:#e8eef3; "></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav style="margin-right:8em;">
@@ -76,7 +77,7 @@
 
 
  <!-- --------------------   Dragable Div   ------------------------ -->
- <div id="Dragable_div">
+ <div id="Dragable_logo" class="Dragable">
     <div id="Dragable_Logo" > 
             <div id="mydivheader">LOGO</div>
             <div class="Dragable_content">
@@ -91,8 +92,17 @@
             </div>
        </div>
  </div>
-
-
+ <div id="Dragable_header" class="Dragable">
+    <div id="Dragable_Logo" > 
+            <div id="mydivheader">HEADER</div>
+            <div class="Dragable_content">
+              Pick Color <br>
+              <input type="color" id="colorpicker" @change="colorpicker()">
+              <label id="lbl_color">#000000</label>
+               <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+            </div>
+       </div>
+ </div>
 
  <!----------------------   Cover Pic   ------------------------ -->
       <div class="parallax"></div>
@@ -575,36 +585,49 @@ export default {
   data() 
   {
     return {
-      widthSize:5,
-
+      Update_width:5,
+      Update_Header:"",
       images_topdestination: [],
       index: null,
       Cname: null,
       slider2: "0",
+     
           
     };
   },
   methods: {
+    colorpicker()
+    {
+       $("#lbl_color").text($("#colorpicker").val());
+       this.Update_Header=$("#colorpicker").val();
+    },
      search(){
             // $('#lblslide').text(this.slider2 +"px")
-            this.widthSize = this.slider2;
+            this.Update_width = this.slider2;
+    },
+    Header()
+    {
+    
+        document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_header").classList.toggle("Dragable_Logo_show");
     },
     logo()
     {
-       document.getElementById("Dragable_div").classList.toggle("Dragable_Logo_show");
+        document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_logo").classList.toggle("Dragable_Logo_show");
     },
-    logintoggle() {
+    logintoggle() 
+    {
       var uname = $("#txt_uname").val();
-      if (uname == "") {
+      if (uname == "") 
+      {
         document.getElementById("LOGIN").classList.toggle("linavbar_login");
         document.getElementById("navbartabs").classList.toggle("navbartabs");
-        document
-          .getElementById("navbartabsuname")
-          .classList.toggle("navbartabsinputs");
-        document
-          .getElementById("navbartabspword")
-          .classList.toggle("navbartabsinputs");
-      } else {
+        document.getElementById("navbartabsuname").classList.toggle("navbartabsinputs");
+        document.getElementById("navbartabspword").classList.toggle("navbartabsinputs");
+      } 
+      else 
+      {
         this.$router.push("Dash");
       }
     },
@@ -842,9 +865,9 @@ export default {
           btnsidebar.classList.add("btn-sidebarscroll");
           btntogglers.classList.add("navbar-togglerscroll");
           sidebars.classList.add("sidebarscroll");
-          document.getElementById("Dragable_div").style.marginTop = "16.8em";
+          document.getElementById("Dragable_header").style.marginTop = "13.8em";
         } else {
-            document.getElementById("Dragable_div").style.marginTop = "7.5%";
+            document.getElementById("Dragable_header").style.marginTop = "3.5%";
           sidebars.classList.remove("sidebarscroll");
           navBar.classList.remove("sticky-top");
           btntogglers.classList.remove("navbar-togglerscroll");
