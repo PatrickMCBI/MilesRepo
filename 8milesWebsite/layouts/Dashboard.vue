@@ -25,10 +25,10 @@
     <!---------------   SIDEBAR   --------------->
     <div id="sidebar" >
      <div style="border:1px solid #FFF;  height:5em;">
-         <i class='fas fa-wrench ml-4 mt-3' style='font-size:46px'></i>
+         <i class='fas fa-wrench ml-4 mt-4' style='font-size:40px'></i>
      </div>
 
-          <b-button-group vertical>
+          <b-button-group vertical style="width:4.5em; left:5px; " >
             <b-button @click="logo" title="LOGO">Logo</b-button>
             <b-button>Header</b-button>
             <b-button>Cover</b-button>
@@ -81,7 +81,8 @@
             <div id="mydivheader">LOGO</div>
             <div class="Dragable_content">
               Resize Logo
-                  <custom-slider v-on:change="search" min="0" max="50" step="1" v-model="slider2"/> <label id="lblslide"  ></label>
+                  <custom-slider v-on:change="search" min="0" max="50" step="1" v-model="slider2"/>
+                   <!-- <label id="lblslide"  ></label> -->
                 <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
                   Change Logo
                   
@@ -420,7 +421,7 @@
 
     <!---------------   BODY   --------------->
     <div id="Body-content">
-      <nuxt />
+      <!-- <nuxt /> -->
     </div>
 
 
@@ -584,7 +585,7 @@ export default {
   },
   methods: {
      search(){
-            $('#lblslide').text(this.slider2 +"px")
+            // $('#lblslide').text(this.slider2 +"px")
             this.widthSize = this.slider2;
     },
     logo()
@@ -840,7 +841,9 @@ export default {
           btnsidebar.classList.add("btn-sidebarscroll");
           btntogglers.classList.add("navbar-togglerscroll");
           sidebars.classList.add("sidebarscroll");
+          document.getElementById("Dragable_div").style.marginTop = "16.8em";
         } else {
+            document.getElementById("Dragable_div").style.marginTop = "7.5%";
           sidebars.classList.remove("sidebarscroll");
           navBar.classList.remove("sticky-top");
           btntogglers.classList.remove("navbar-togglerscroll");
