@@ -24,24 +24,24 @@
 
     <!---------------   SIDEBAR   --------------->
     <div id="sidebar" >
-     <div style="border:1px solid #FFF;  height:5em;">
-         <i class='fas fa-wrench ml-4 mt-4' style='font-size:40px'></i>
-     </div>
+      <div style="border:1px solid #FFF;  height:5em;">
+          <i class='fas fa-wrench ml-4 mt-4' style='font-size:40px'></i>
+      </div>
 
-          <b-button-group vertical style="width:4.5em; left:5px; " >
-            <b-button @click="logo" title="LOGO">Logo</b-button>
-            <b-button>Header</b-button>
-            <b-button>Cover</b-button>
-            <b-button>Destination</b-button>
-            <b-button>Partners</b-button>
-            <b-button>Services</b-button>
-            <b-button>Promo</b-button>
-            <b-button>Contact</b-button>
-          </b-button-group>
-        </div>
+      <b-button-group vertical style="width:4.5em; left:5px; " >
+        <b-button @click="logo" title="LOGO">Logo</b-button>
+        <b-button>Header</b-button>
+        <b-button>Cover</b-button>
+        <b-button>Destination</b-button>
+        <b-button>Partners</b-button>
+        <b-button>Services</b-button>
+        <b-button>Promo</b-button>
+        <b-button>Contact</b-button>
+      </b-button-group>
+    </div>
 
 
-
+    
     <!---------------   NAVBAR   --------------->
     <b-navbar toggleable="lg" type="dark" variant="white" id="Header-content" class="Header-content">
       <button class @click="btn_sidebar" id="btn-sidebar" style="display:none;">
@@ -50,7 +50,7 @@
       <div class="container">
         <b-navbar-brand>
           <!-- <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt /> -->
-          <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" v-bind:style="{ width: widthSize + 'em !important' }" alt />
+          <img src="../assets/img/8Miles_Travel_Corp.png" id="img-resize" class="img-fluid img-leftlogo" v-bind:style="{ width: widthSize + 'em !important' }" alt />
         </b-navbar-brand>
         <b-navbar-toggle id="btntoggler" target="nav-collapse" style="background-color:#e8eef3; "></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav style="margin-right:8em;">
@@ -86,7 +86,8 @@
                 <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
                   Change Logo
                   
-              <input class="mt-4" style="margin-left:17%" type="file" name="pic" accept="image/*">
+              <input class="mt-4" style="margin-left:17%" type="file" name="pic" accept="image/*"
+              onchange="document.getElementById('img-resize').src = window.URL.createObjectURL(this.files[0])">
             </div>
        </div>
  </div>
