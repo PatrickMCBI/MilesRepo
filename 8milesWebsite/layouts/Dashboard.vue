@@ -50,7 +50,8 @@
       <div class="container">
         <b-navbar-brand>
           <!-- <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt /> -->
-          <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" v-bind:style="{ width: Update_width + 'em !important' }" alt />
+          <img src="../assets/img/8Miles_Travel_Corp.png" id="img-resize" class="img-fluid img-leftlogo" v-bind:style="{ width: Update_width + 'em !important' }" alt />
+
         </b-navbar-brand>
         <b-navbar-toggle id="btntoggler" target="nav-collapse" style="background-color:#e8eef3; "></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav style="margin-right:8em;">
@@ -86,7 +87,8 @@
                 <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
                   Change Logo
                   
-              <input class="mt-4" style="margin-left:17%" type="file" name="pic" accept="image/*">
+              <input class="mt-4" style="margin-left:17%" type="file" name="pic" accept="image/*"
+              onchange="document.getElementById('img-resize').src = window.URL.createObjectURL(this.files[0])">
             </div>
        </div>
  </div>
