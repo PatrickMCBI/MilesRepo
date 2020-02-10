@@ -43,7 +43,7 @@
 
 
     <!---------------   NAVBAR   --------------->
-    <b-navbar toggleable="lg" type="dark" variant="white" id="Header-content" class="Header-content" v-bind:style="{ backgroundColor: Update_Header + '!important' }" >
+    <b-navbar toggleable="lg" type="dark" variant="white" id="Header-content" class="Header-content" v-bind:style="{ color: Update_font_Header + '!important',backgroundColor: Update_bg_Header + '!important' }" >
       <button class @click="btn_sidebar" id="btn-sidebar" style="display:none;">
         <i class="material-icons social-icon-login" style="cursor:pointer; font-size:8em;">person</i> LOGIN
       </button>
@@ -54,8 +54,8 @@
         </b-navbar-brand>
         <b-navbar-toggle id="btntoggler" target="nav-collapse" style="background-color:#e8eef3; "></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav style="margin-right:8em;">
-          <b-navbar-nav class="ml-auto mr-5">
-            <div id="navbartabs"  class="mt-2">
+          <b-navbar-nav class="ml-auto mr-5" >
+            <div id="navbartabs"  class="mt-2" >
               <b-navbar-brand class="linavbar" id="HOME" value="Flight" href="#app1">HOME</b-navbar-brand>
               <b-navbar-brand class="linavbar" id="DESTINATION" value="Ferries" href="#div_destination">DESTINATION</b-navbar-brand>
               <b-navbar-brand class="linavbar" id="PARTNERS" href="#div_partners">PARTNERS</b-navbar-brand>
@@ -94,10 +94,13 @@
     <div id="Dragable_Logo" > 
             <div id="mydivheader">HEADER</div>
             <div class="Dragable_content">
-              Pick Color <br>
-              <input type="color" id="colorpicker" @change="colorpicker()">
-              <label id="lbl_color">#000000</label>
+              Change Background Color <br>
+              <input type="color" id="bgcolorpicker" @change="bg_colorpicker">
+              <label id="lbl_bgcolor">#000000</label>
                <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                Change Font Color <br>
+              <input type="color" id="fontcolorpicker" @change="font_colorpicker()">
+              <label id="lbl_fontcolor">#000000</label>
             </div>
        </div>
  </div>
@@ -584,7 +587,8 @@ export default {
   {
     return {
       Update_width:5,
-      Update_Header:"",
+      Update_bg_Header:"",
+       Update_font_Header:"",
       images_topdestination: [],
       index: null,
       Cname: null,
@@ -594,10 +598,15 @@ export default {
     };
   },
   methods: {
-    colorpicker()
+    bg_colorpicker()
     {
-       $("#lbl_color").text($("#colorpicker").val());
-       this.Update_Header=$("#colorpicker").val();
+       $("#lbl_bgcolor").text($("#bgcolorpicker").val());
+       this.Update_bg_Header=$("#bgcolorpicker").val();
+    },
+    font_colorpicker()
+    {
+       $("#lbl_fontcolor").text($("#fontcolorpicker").val());
+       this.Update_font_Header=$("#fontcolorpicker").val();
     },
      search(){
             // $('#lblslide').text(this.slider2 +"px")
