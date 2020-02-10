@@ -27,6 +27,7 @@
     "vue-gallery": "^2.0.1",
     "vue-gallery-slideshow": "^1.5.0",
     "vue-runtime-helpers": "^1.1.2",
+    "vuedraggable": "^2.23.2",
     "webpack-jquery-ui": "^2.0.1"
   },
   "devDependencies": {}
