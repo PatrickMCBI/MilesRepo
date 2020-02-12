@@ -723,7 +723,7 @@
     
   </div>
 </template>
-<style  src="@/assets/css/custom.css">
+<style scoped src="@/assets/css/custom.css">
 </style>
 
 <!-----------------   SCRIPTS  ------------------>
