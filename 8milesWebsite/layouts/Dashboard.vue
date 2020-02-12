@@ -1,8 +1,7 @@
 <template >
   <div id="app1">
 
-
-
+    
 
     <!---------------   LINK   --------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -24,48 +23,45 @@
 
     <!---------------   SIDEBAR   --------------->
     <div id="sidebar" >
-     <div style="border:1px solid #FFF;  height:5em;">
-         <i class='fas fa-wrench ml-4 mt-4' style='font-size:40px'></i>
-     </div>
-
-          <b-button-group vertical style="width:4.5em; left:5px; " >
+      <div style="border:1px solid #FFF;  height:5em;">
+      <i class='fas fa-wrench ml-4 mt-4' style='font-size:40px'></i>
+      </div>
+            <b-button-group vertical style="width:4.5em; left:5px; " >
             <b-button @click="logo" title="LOGO" style="margin-top:2em;">Logo</b-button>
             <b-button @click="Header">Header</b-button>
-            <b-button>Cover</b-button>
+            <b-button @click="Cover">Cover</b-button>
             <b-button>Destination</b-button>
             <b-button>Partners</b-button>
             <b-button>Services</b-button>
             <b-button>Promo</b-button>
             <b-button>Contact</b-button>
-          </b-button-group>
-        </div>
+            <b-button @click="Body">Body</b-button>
+            </b-button-group>
+     </div>
 
 
 
     <!---------------   NAVBAR   --------------->
-    <b-navbar toggleable="lg" type="dark" variant="white" id="Header-content" class="Header-content" v-bind:style="{ color: Update_font_Header + '!important',backgroundColor: Update_bg_Header + '!important' }" >
+    <b-navbar toggleable="lg" type="dark" variant="white" id="Header-content" class="Header-content" v-bind:style="{backgroundColor: Update_bg_Header + '!important' }" >
       <button class @click="btn_sidebar" id="btn-sidebar" style="display:none;">
         <i class="material-icons social-icon-login" style="cursor:pointer; font-size:8em;">person</i> LOGIN
       </button>
-      <div class="container">
+      <div class="container" >
         <b-navbar-brand>
-          <!-- <img src="../assets/img/8Miles_Travel_Corp.png" class="img-fluid img-leftlogo" alt /> -->
           <img src="../assets/img/8Miles_Travel_Corp.png" id="img-resize" class="img-fluid img-leftlogo" v-bind:style="{ width: Update_width + 'em !important' }" alt />
-
         </b-navbar-brand>
         <b-navbar-toggle id="btntoggler" target="nav-collapse" style="background-color:#e8eef3; "></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav style="margin-right:8em;">
           <b-navbar-nav class="ml-auto mr-5" >
-            <div id="navbartabs"  class="mt-2" >
-              <b-navbar-brand class="linavbar" id="HOME" value="Flight" href="#app1">HOME</b-navbar-brand>
-              <b-navbar-brand class="linavbar" id="DESTINATION" value="Ferries" href="#div_destination">DESTINATION</b-navbar-brand>
-              <b-navbar-brand class="linavbar" id="PARTNERS" href="#div_partners">PARTNERS</b-navbar-brand>
-              <b-navbar-brand class="linavbar" id="SERVICES" href="#div_servicesoffered">SERVICES</b-navbar-brand>
-              <b-navbar-brand class="linavbar" id="PROMO" href="#div_promo">PROMO</b-navbar-brand>
-              <b-navbar-brand class="linavbar" id="ABOUT" href="#div_aboutus">ABOUT</b-navbar-brand>
-              <b-navbar-brand class="linavbar" id="CONTACT" href="#div_getintouch">CONTACT</b-navbar-brand>
+            <div id="navbartabs" class="mt-2" >
+              <b-navbar-brand class="linavbar" id="HOME" @click="Hometab">HOME</b-navbar-brand>
+              <b-navbar-brand class="linavbar" id="DESTINATION"  @click="Destinationtab">DESTINATION</b-navbar-brand>
+              <b-navbar-brand class="linavbar" id="PARTNERS" @click="Partnerstab">PARTNERS</b-navbar-brand>
+              <b-navbar-brand class="linavbar" id="SERVICES" @click="Servicestab">SERVICES</b-navbar-brand>
+              <b-navbar-brand class="linavbar" id="ABOUT" @click="Abouttab">ABOUT</b-navbar-brand>
+              <b-navbar-brand class="linavbar" id="CONTACT" @click="Contacttab">CONTACT</b-navbar-brand>
             </div>
-            <b-nav-item-dropdown toggle-class="text-success Name">
+            <b-nav-item-dropdown toggle-class="text-dark Name">
               <b-dropdown-item>Settings</b-dropdown-item>
               <b-dropdown-item v-b-modal.modal-login>Logout</b-dropdown-item>
             </b-nav-item-dropdown>
@@ -82,39 +78,73 @@
             <div id="mydivheader">LOGO</div>
             <div class="Dragable_content">
               Resize Logo
-                  <custom-slider v-on:change="search" min="0" max="50" step="1" v-model="slider2"/>
-                   <!-- <label id="lblslide"  ></label> -->
+                  <custom-slider v-on:change="updatelogo" min="0" max="50" step="1" v-model="slider_logo"/>
                 <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
                   Change Logo
-                  
-              <input class="mt-4" style="margin-left:17%" type="file" name="pic" accept="image/*"
-              onchange="document.getElementById('img-resize').src = window.URL.createObjectURL(this.files[0])">
+              <input class="mt-4" style="margin-left:17%" type="file" name="pic" accept="image/*" onchange="document.getElementById('img-resize').src = window.URL.createObjectURL(this.files[0])">
             </div>
        </div>
  </div>
+
+
  <div id="Dragable_header" class="Dragable">
-    <div id="Dragable_Logo" > 
+    <div id="Dragable_title_header" > 
             <div id="mydivheader">HEADER</div>
-            <div class="Dragable_content">
-              Change Background Color <br>
+            <div class="Dragable_content_header">
+               Background Color <br>
               <input type="color" id="bgcolorpicker" @change="bg_colorpicker">
               <label id="lbl_bgcolor">#000000</label>
                <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
-                Change Font Color <br>
+                 Font Color <br>
               <input type="color" id="fontcolorpicker" @change="font_colorpicker()">
               <label id="lbl_fontcolor">#000000</label>
+               <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                 Font Style <br>
+             <b-form-select id="bform_font_header" v-model="selected" :options="selectfont" style="width:13em;" size="sm" class="mt-0" @change="font_header($event)"></b-form-select>
+              <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                Height <br>
+            <custom-slider v-on:change="updateheader_height" min="0" max="50" step="1" v-model="slider_header"/>
+            
             </div>
        </div>
  </div>
 
- <!----------------------   Cover Pic   ------------------------ -->
-      <div class="parallax"></div>
+  <div id="Dragable_cover" class="Dragable">
+    <div id="Dragable_title_cover" > 
+            <div id="mydivheader">COVER</div>
+            <div class="Dragable_content_cover">
+               Change Cover <br>
+              <input class="mt-4" style="margin-left:17%" type="file" name="pics" accept="image/*" onchange="document.getElementById('parallax').src = window.URL.createObjectURL(this.files[0])">
+               <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                 Height <br>
+                 <custom-slider v-on:change="updatecover_height" min="0" max="50" step="1" v-model="sliderheight_cover"/>
+               <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                 Width <br>
+                 <custom-slider v-on:change="updatecover_width" min="0" max="100" step="1" v-model="sliderwidth_cover"/>
+            </div>
+       </div>
+ </div>
 
+  <div id="Dragable_Body" class="Dragable">
+    <div id="Dragable_title_Body" > 
+            <div id="mydivheader">BODY</div>
+            <div class="Dragable_content_Body">
+               Change background <br>
+              <input class="mt-4" style="margin-left:17%" type="file" name="pics" accept="image/*" onchange="document.getElementById('app1').src = window.URL.createObjectURL(this.files[0])">
+               <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                  Change Color <br>
+            </div>
+       </div>
+ </div>
+ <!----------------------   Cover Pic   ------------------------ -->
+ <div class="text-center">
+ <img src="../assets/img/headerimg.png" id="parallax" class="img-fluid" style="width:100%; height:550px !important; ">
+ </div>
 
 
 <!-- --------------------   Top Destination   ------------------------ -->
     <div class="container text-center" >
-      <h2 id="div_destination" class="font-weight-light text-black container mt-5">Top Destinations</h2>
+      <h2 id="div_destination" class="font-weight-light text-black container">Top Destinations</h2>
       <p class="color-black-opacity-5 container mt-2">Choose Your Next Destination</p>
     </div>
     <div class="container text-center" >
@@ -474,7 +504,6 @@
             <h5>Registration</h5>
           </b>
         </template>
-
         <div class="row container pt-3">
           <div class="col-md-6">
             <div class="form-group">
@@ -575,8 +604,6 @@
 
 <!-----------------   SCRIPTS   ------------------>
 <script>
-// require('@/assets/css/editlayout_dashboard.css')
-// import "vue-custom-range-slider/dist/vue-custom-range-slider.css";
 import CustomSlider from "vue-custom-range-slider";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -590,16 +617,74 @@ export default {
     return {
       Update_width:5,
       Update_bg_Header:"",
-       Update_font_Header:"",
+      Update_font_Header:"",
+      slider_header:0,
       images_topdestination: [],
       index: null,
       Cname: null,
-      slider2: "0",
-     
-          
+      slider_logo: "0",
+      slider_header:"0",
+      sliderheight_cover:"0",
+      sliderwidth_cover:"0",
+      selected: null,
+      selectfont: [   
+          {value: null, text: 'Please select an option' },
+          {value: 'Arial Black',  text: 'Arial Black' },
+          {value: 'Brooklyn Bold',  text: 'Brooklyn Bold' },
+          {value: 'Impact',  text: 'Impact' },
+          {value: ' Haettenschweiler',  text: ' Haettenschweiler' },
+          {value: 'sans-serif',  text: 'sans-serif' },
+          {value: 'OCR A Std, monospace',  text: 'OCR A Std, monospace' },
+          {value: 'Brush Script MT, Brush Script Std, cursive',  text: 'Brush Script MT, Brush Script Std, cursive' }
+        ]
     };
   },
-  methods: {
+  methods: 
+  {
+     Hometab()
+    {
+      document.querySelector('#app1').scrollIntoView({ behavior: 'smooth' });
+    },
+     Destinationtab()
+    {
+      document.querySelector('#div_destination').scrollIntoView({ behavior: 'smooth' });
+    },
+     Partnerstab()
+    {
+      document.querySelector('#div_partners').scrollIntoView({  behavior: 'smooth' });
+    },
+     Servicestab()
+    {
+      document.querySelector('#div_servicesoffered').scrollIntoView({   behavior: 'smooth' });
+    },
+    Abouttab()
+    {
+      document.querySelector('#div_aboutus').scrollIntoView({  behavior: 'smooth'  });
+    },
+     Contacttab()
+    {
+      document.querySelector('#div_getintouch').scrollIntoView({  behavior: 'smooth' });
+    },
+    topfunction() 
+    {
+      document.querySelector('#app1').scrollIntoView({ behavior: 'smooth' });
+    },
+    updateheader_height()
+    {
+       $( ".Header-content" ).css( "height", this.slider_header +"em" );
+    },
+    updatecover_height()
+    {
+       $( "#parallax" ).css( "height", this.sliderheight_cover +"em" );
+    },
+     updatecover_width()
+    {
+       $( "#parallax" ).css( "width", this.sliderwidth_cover +"%" );
+    },
+    font_header: function(event) {
+         console.log(this.selected);
+           $( ".linavbar" ).css( "font-family", this.selected );
+    },
     bg_colorpicker()
     {
        $("#lbl_bgcolor").text($("#bgcolorpicker").val());
@@ -609,22 +694,47 @@ export default {
     {
        $("#lbl_fontcolor").text($("#fontcolorpicker").val());
        this.Update_font_Header=$("#fontcolorpicker").val();
+       $( ".linavbar" ).css( "color", this.Update_font_Header );
     },
-     search(){
-            // $('#lblslide').text(this.slider2 +"px")
-            this.Update_width = this.slider2;
+     updatelogo()
+     {
+            this.Update_width = this.slider_logo;
+    },
+    updatebackground()
+    {
+          $( "#app1" ).css( "background-image", this.Update_font_Header +"!important;");
+    },
+      Cover()
+    {
+       document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_Body").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_cover").classList.toggle("Dragable_Logo_show");
+       
     },
     Header()
     {
-    
-        document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_cover").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_Body").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_header").classList.toggle("Dragable_Logo_show");
     },
     logo()
     {
-        document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_cover").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_Body").classList.remove("Dragable_Logo_show");
+         document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_logo").classList.toggle("Dragable_Logo_show");
     },
+     Body()
+    {
+       document.getElementById("Dragable_cover").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
+         document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
+       document.getElementById("Dragable_Body").classList.toggle("Dragable_Logo_show");
+       
+    },
+    
     logintoggle() 
     {
       var uname = $("#txt_uname").val();
@@ -640,98 +750,52 @@ export default {
         this.$router.push("Dash");
       }
     },
-    btnlogin() {
-      alert("login");
-    },
-    SampleJsonData() {
-      this.$router.push("SampleJsonData");
-    },
-    close_footer() {
-      document.getElementById("Footer-content").style.display = "none";
-      document.getElementById("return-to-top").classList.remove("botfooter");
-    },
-    btn_sidebar() {
-      document.getElementById("sidebar").classList.toggle("sidebar-expand");
-      setTimeout(function() {
-        document
-          .getElementById("sidebar-content")
-          .classList.toggle("sidebar-content-show");
-      }, 200);
-    },
-    ok() {
-      Cookies.remove("Uname");
-      this.$router.push("/");
-    },
-    PageName: function(event) {
-      var page = event.target.id;
-      $(".linavbar").removeClass("liactive");
-      $(event.target).addClass("liactive");
-      this.$router.push(page);
-    },
-    btnhidehome() {
-      var nh = document.getElementById("Navbarleft-home");
-      nh.classList.toggle("Navbarleft-home");
-    },
-    topfunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-  },
-  mounted() {
-            
-
-              //  dragElement(document.getElementById("Dragable_Logo"));
-
-              //                   function dragElement(elmnt) {
-              //                     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-              //                     if (document.getElementById(elmnt.id + "header")) {
-                                 
-              //                       document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-              //                     } else {
-                                  
-              //                       elmnt.onmousedown = dragMouseDown;
-              //                     }
-
-              //                     function dragMouseDown(e) {
-              //                       e = e || window.event;
-              //                       e.preventDefault();
-                                
-              //                       pos3 = e.clientX;
-              //                       pos4 = e.clientY;
-              //                       document.onmouseup = closeDragElement;
-                                
-              //                       document.onmousemove = elementDrag;
-              //                     }
-
-              //                     function elementDrag(e) {
-              //                       e = e || window.event;
-              //                       e.preventDefault();
-                                   
-              //                       pos1 = pos3 - e.clientX;
-              //                       pos2 = pos4 - e.clientY;
-              //                       pos3 = e.clientX;
-              //                       pos4 = e.clientY;
-                                
-              //                       elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-              //                       elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-              //                     }
-
-              //                     function closeDragElement() {
-                                   
-              //                       document.onmouseup = null;
-              //                       document.onmousemove = null;
-              //                     }
-              //                   }
+                  btnlogin() {
+                    alert("login");
+                  },
+                  SampleJsonData() {
+                    this.$router.push("SampleJsonData");
+                  },
+                  close_footer() {
+                    document.getElementById("Footer-content").style.display = "none";
+                    document.getElementById("return-to-top").classList.remove("botfooter");
+                  },
+                  btn_sidebar() {
+                    document.getElementById("sidebar").classList.toggle("sidebar-expand");
+                    setTimeout(function() {
+                      document
+                        .getElementById("sidebar-content")
+                        .classList.toggle("sidebar-content-show");
+                    }, 200);
+                  },
+                  ok() {
+                    Cookies.remove("Uname");
+                    this.$router.push("/");
+                  },
+                  PageName: function(event) {
+                    var page = event.target.id;
+                    $(".linavbar").removeClass("liactive");
+                    $(event.target).addClass("liactive");
+                    this.$router.push(page);
+                  },
+                  btnhidehome() {
+                    var nh = document.getElementById("Navbarleft-home");
+                    nh.classList.toggle("Navbarleft-home");
+                  }
+                },
+                mounted() 
+                {
+                      $("#HOME").addClass("liactive");  
 
 
 
+  // -------------------- Cookies for login ------------------------
     var Uname = Cookies.get("Uname");
     if (typeof Uname === "undefined") 
     {
       this.$router.push("/");
     }
     $(".Name").text(Cookies.get("Uname"));
-   
 
 
 
@@ -791,43 +855,7 @@ export default {
 
 
 
-    $("#HOME").addClass("liactive");
-    $(document).ready(function() {
-      clockUpdate();
-      setInterval(clockUpdate, 1000);
-    });
-
-
-
-
-    function clockUpdate() {
-      var date = new Date();
-      //    $('.digital-clock').css({'color': '#fff', 'text-shadow': '0 0 6px #ff0'});
-      $(".digital-clock");
-      function addZero(x) {
-        if (x < 10) {
-          return (x = "0" + x);
-        } else {
-          return x;
-        }
-      }
-      function twelveHour(x) {
-        if (x > 12) {
-          return (x = x - 12);
-        } else if (x == 0) {
-          return (x = 12);
-        } else {
-          return x;
-        }
-      }
-      var h = addZero(twelveHour(date.getHours()));
-      var m = addZero(date.getMinutes());
-      var s = addZero(date.getSeconds());
-      $(".digital-clock").text("Time: " + h + ":" + m + ":" + s);
-    }
-
-
-
+  // -------------------- PRELOADER ------------------------
     setTimeout(function() {
       document.getElementById("preloader").style.opacity = 0.2;
     }, 1990);
@@ -836,54 +864,64 @@ export default {
     }, 2000);
 
 
-
-
-    this.$nextTick(function() {
-      window.addEventListener("scroll", function() {
-        if (document.documentElement.scrollTop > 0) {
-          $(".linavbar").removeClass("liactive");
-          document.getElementById("HOME").classList.add("liactive");
-        }
-        if (document.documentElement.scrollTop > 600) {
-          $(".linavbar").removeClass("liactive");
-          document.getElementById("DESTINATION").classList.add("liactive");
-        }
-        if (document.documentElement.scrollTop > 1200) {
-          $(".linavbar").removeClass("liactive");
-          document.getElementById("PARTNERS").classList.add("liactive");
-        }
-        if (document.documentElement.scrollTop > 1700) {
-          $(".linavbar").removeClass("liactive");
-          document.getElementById("SERVICES").classList.add("liactive");
-        }
-        if (document.documentElement.scrollTop > 2500) {
-          $(".linavbar").removeClass("liactive");
-          document.getElementById("ABOUT").classList.add("liactive");
-        }
-        if (document.documentElement.scrollTop > 3000) {
-          $(".linavbar").removeClass("liactive");
-          document.getElementById("CONTACT").classList.add("liactive");
-        }
-        var navBar = document.getElementById("Header-content");
-        var btnsidebar = document.getElementById("btn-sidebar");
-        var btntogglers = document.getElementById("btntoggler");
-        var sidebars = document.getElementById("sidebar");
-        if (document.documentElement.scrollTop > 100) {
-          navBar.classList.add("sticky-top");
-          document.getElementById("return-to-top").style.display = "block";
-          btnsidebar.classList.add("btn-sidebarscroll");
-          btntogglers.classList.add("navbar-togglerscroll");
-          sidebars.classList.add("sidebarscroll");
-          document.getElementById("Dragable_header").style.marginTop = "13.8em";
-        } else {
-            document.getElementById("Dragable_header").style.marginTop = "3.5%";
-          sidebars.classList.remove("sidebarscroll");
-          navBar.classList.remove("sticky-top");
-          btntogglers.classList.remove("navbar-togglerscroll");
-          btnsidebar.classList.remove("btn-sidebarscroll");
-          document.getElementById("return-to-top").style.display = "none";
-        }
-      });
+// -------------------- Scroll ------------------------
+    this.$nextTick(function() 
+    {
+        window.addEventListener("scroll", function() 
+        {
+                    if (document.documentElement.scrollTop > 0) {
+                      $(".linavbar").removeClass("liactive");
+                      document.getElementById("HOME").classList.add("liactive");
+                    }
+                    if (document.documentElement.scrollTop > 440) {
+                      $(".linavbar").removeClass("liactive");
+                      document.getElementById("DESTINATION").classList.add("liactive");
+                    }
+                    if (document.documentElement.scrollTop > 1100) {
+                      $(".linavbar").removeClass("liactive");
+                      document.getElementById("PARTNERS").classList.add("liactive");
+                    }
+                    if (document.documentElement.scrollTop > 1450) {
+                      $(".linavbar").removeClass("liactive");
+                      document.getElementById("SERVICES").classList.add("liactive");
+                    }
+                    if (document.documentElement.scrollTop > 2000) {
+                      $(".linavbar").removeClass("liactive");
+                      document.getElementById("ABOUT").classList.add("liactive");
+                    }
+                    if (document.documentElement.scrollTop > 2700) {
+                      $(".linavbar").removeClass("liactive");
+                      document.getElementById("CONTACT").classList.add("liactive");
+                    }
+                    
+                    // -------------------- Header Scroll ------------------------
+                    var navBar = document.getElementById("Header-content");
+                    var btnsidebar = document.getElementById("btn-sidebar");
+                    var btntogglers = document.getElementById("btntoggler");
+                    var sidebars = document.getElementById("sidebar");
+                    if (document.documentElement.scrollTop > 100) 
+                    {
+                      navBar.classList.add("sticky-top");
+                      document.getElementById("return-to-top").style.display = "block";
+                      btnsidebar.classList.add("btn-sidebarscroll");
+                      btntogglers.classList.add("navbar-togglerscroll");
+                      sidebars.classList.add("sidebarscroll");
+                      document.getElementById("Dragable_logo").style.marginTop = "13.8em";
+                      document.getElementById("Dragable_header").style.marginTop = "15.2em";
+                       document.getElementById("Dragable_cover").style.marginTop = "17.2em";
+                    } 
+                    else 
+                    {
+                      document.getElementById("Dragable_cover").style.marginTop = "7.2em";
+                      document.getElementById("Dragable_logo").style.marginTop = "3.5%";
+                      document.getElementById("Dragable_header").style.marginTop = "5.5%";
+                      sidebars.classList.remove("sidebarscroll");
+                      navBar.classList.remove("sticky-top");
+                      btntogglers.classList.remove("navbar-togglerscroll");
+                      btnsidebar.classList.remove("btn-sidebarscroll");
+                      document.getElementById("return-to-top").style.display = "none";
+                    }
+        });
     });
   }
 };
