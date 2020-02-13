@@ -130,7 +130,7 @@
             <div id="mydivheader">BODY</div>
             <div class="Dragable_content_Body">
                Change background <br>
-              <input class="mt-4" style="margin-left:17%" id="getimg" type="file" name="pics" accept="image/*" @change="PreviewImage($event)">
+              <input class="mt-4" style="margin-left:17%" id="getimg" type="file" name="pics" accept="image/*" @change="previewImage($event)" >
                <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
                   Change Color <br>
             </div>
@@ -629,6 +629,7 @@ export default {
       sliderheight_cover:"0",
       sliderwidth_cover:"0",
       selected: null,
+      imageData:"",
       selectfont: [   
           {value: null, text: 'Please select an option' },
           {value: 'Arial Black',  text: 'Arial Black' },
@@ -684,12 +685,20 @@ export default {
        $( "#parallax" ).css( "width", this.sliderwidth_cover +"%" );
     },
    
-    PreviewImage:function(event) {
-          
-                  var fileName = event.target.files[0].name;
-                  alert('The file "' + fileName +  '" has been selected.');
-                   $( "#app1" ).css( "background-image", url ('..'+'/'+fileName) +" !important" );
-           
+    previewImage: function(event) 
+    {
+            if (event.target.files && event.target.files[0]) 
+            {
+                var reader = new FileReader();
+                reader.readAsDataURL(event.target.files[0]);
+                reader.onload = (e) => {
+                    this.imageData = e.target.result;
+                    $('#app1').css("background-image","url(" + e.target.result + ")");
+                }
+            }
+            $("#getimg").change(function () {
+                    readURL(this);
+          });
     },
     font_header: function(event) {
          console.log(this.selected);
@@ -760,41 +769,42 @@ export default {
         this.$router.push("Dash");
       }
     },
-                  btnlogin() {
-                    alert("login");
-                  },
-                  SampleJsonData() {
-                    this.$router.push("SampleJsonData");
-                  },
-                  close_footer() {
-                    document.getElementById("Footer-content").style.display = "none";
-                    document.getElementById("return-to-top").classList.remove("botfooter");
-                  },
-                  btn_sidebar() {
-                    document.getElementById("sidebar").classList.toggle("sidebar-expand");
-                    setTimeout(function() {
-                      document
-                        .getElementById("sidebar-content")
-                        .classList.toggle("sidebar-content-show");
-                    }, 200);
-                  },
-                  ok() {
-                    Cookies.remove("Uname");
-                    this.$router.push("/");
-                  },
-                  PageName: function(event) {
-                    var page = event.target.id;
-                    $(".linavbar").removeClass("liactive");
-                    $(event.target).addClass("liactive");
-                    this.$router.push(page);
-                  },
-                  btnhidehome() {
-                    var nh = document.getElementById("Navbarleft-home");
-                    nh.classList.toggle("Navbarleft-home");
-                  }
-                },
+     btnlogin() {
+           alert("login");
+         },
+     SampleJsonData() {
+     this.$router.push("SampleJsonData");
+     },
+      close_footer() {
+     document.getElementById("Footer-content").style.display = "none";
+     document.getElementById("return-to-top").classList.remove("botfooter");
+     },
+     btn_sidebar() {
+     document.getElementById("sidebar").classList.toggle("sidebar-expand");
+     etTimeout(function() {
+      document.getElementById("sidebar-content").classList.toggle("sidebar-content-show");
+      }, 200);
+      },
+     ok() {
+      Cookies.remove("Uname");
+      this.$router.push("/");
+      },
+      PageName: function(event) {
+       var page = event.target.id;
+        $(".linavbar").removeClass("liactive");
+        $(event.target).addClass("liactive");
+       this.$router.push(page);
+       },
+       btnhidehome() {
+       var nh = document.getElementById("Navbarleft-home");
+         nh.classList.toggle("Navbarleft-home");
+        }
+       },
                 mounted() 
                 {
+
+
+
                       $("#HOME").addClass("liactive");  
 
 

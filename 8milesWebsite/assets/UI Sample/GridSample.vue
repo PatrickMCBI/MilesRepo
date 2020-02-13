@@ -27,7 +27,7 @@
                 <input type="text" id="lname" placeholder="Lastname">
                 <input type="button" value="Save" @click="save" >
                 <br><br>
-                Person List
+                Person Lists
                 <div style=" width:50%;  margin-left:2em;">
               <table style="width:100%; " id="table">
                 <tr style="border-bottom:1px solid red; height:0.1em !important; text-align:center; background-color:#4ECB4A; color:#eeeeee;">
