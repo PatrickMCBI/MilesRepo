@@ -12,7 +12,6 @@
 </template>
 
 <style>
-
 #gridview
   {
     border:1px solid red;
