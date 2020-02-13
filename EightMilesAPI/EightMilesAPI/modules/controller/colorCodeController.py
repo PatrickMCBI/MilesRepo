@@ -1,5 +1,5 @@
 import json
-
+import os
 from functools import wraps
 from flask import request, jsonify
 
@@ -7,10 +7,10 @@ from modules.helpers.database import db_session
 from modules.helpers.statuscode import Status
 from modules.helpers.serialize import *
 from werkzeug.utils import secure_filename
-import os
 
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+
 def allowed_filename(filename):
     return '.' in filename and filename.rsplit('.',1)[1] in ALLOWED_EXTENSIONS
 
@@ -38,6 +38,4 @@ def insert_color():
             
     status = Status('200', 'Successfully Added New Color!')
     return status.status_code()
-  
-
     
