@@ -60,8 +60,9 @@
     <Folder Include="modules\controller\" />
     <Folder Include="modules\helpers\" />
     <Folder Include="modules\model\" />
-    <Folder Include="sp\" />
+    <Folder Include="static\" />
     <Folder Include="routes\" />
+    <Folder Include="static\images\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="api\">

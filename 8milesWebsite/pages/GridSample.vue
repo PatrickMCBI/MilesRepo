@@ -43,9 +43,6 @@
  <!-- </no-ssr> -->
 </template>
 
-<<<<<<< HEAD
-<style>
-=======
 <script>
 import $ from "jquery";
 export default {
@@ -115,7 +112,6 @@ export default {
 
 
 /* --------------- Sample 1 ------------------ */
->>>>>>> 7d953ad158fabe97ee63527d4883f42995d92449
 #gridview
   {
     border:1px solid red;

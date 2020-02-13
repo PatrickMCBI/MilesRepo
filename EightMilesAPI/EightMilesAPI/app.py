@@ -11,9 +11,12 @@ from routes.colorCodeRoute import colorCodeApi
 
 
 
+
 app = Flask(__name__)
 api_version = '/api/v1.0'
 CORS(app)
+
+
 """
 Blueprint is structuring the api's
 """

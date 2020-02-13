@@ -130,12 +130,14 @@
             <div id="mydivheader">BODY</div>
             <div class="Dragable_content_Body">
                Change background <br>
-              <input class="mt-4" style="margin-left:17%" type="file" name="pics" accept="image/*" onchange="document.getElementById('app1').src = window.URL.createObjectURL(this.files[0])">
+              <input class="mt-4" style="margin-left:17%" id="getimg" type="file" name="pics" accept="image/*" @change="PreviewImage($event)">
                <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
                   Change Color <br>
             </div>
        </div>
  </div>
+
+ 
  <!----------------------   Cover Pic   ------------------------ -->
  <div class="text-center">
  <img src="../assets/img/headerimg.png" id="parallax" class="img-fluid" style="width:100%; height:550px !important; ">
@@ -681,6 +683,14 @@ export default {
     {
        $( "#parallax" ).css( "width", this.sliderwidth_cover +"%" );
     },
+   
+    PreviewImage:function(event) {
+          
+                  var fileName = event.target.files[0].name;
+                  alert('The file "' + fileName +  '" has been selected.');
+                   $( "#app1" ).css( "background-image", url ('..'+'/'+fileName) +" !important" );
+           
+    },
     font_header: function(event) {
          console.log(this.selected);
            $( ".linavbar" ).css( "font-family", this.selected );
@@ -702,7 +712,7 @@ export default {
     },
     updatebackground()
     {
-          $( "#app1" ).css( "background-image", this.Update_font_Header +"!important;");
+          $( "#app1" ).css("background-image", this.Update_font_Header +"!important;");
     },
       Cover()
     {
