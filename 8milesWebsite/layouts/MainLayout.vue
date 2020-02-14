@@ -2,7 +2,7 @@
 
   <div id="apps">
  
-        <link href="../css/custom.css" rel="stylesheet" />
+       
   
     <!--------------- LINK --------------->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -551,9 +551,8 @@
             <div id="fb-root"></div>
         </div>
 
-    <div id="return-to-topchat"  @click="fbchat"   class=" " style="transition: all ease 2s; background-color:#0084ff; color:white !important;" >
+    <div id="return-to-topchat"  @click="fbchat" style="transition: all ease 2s; background-color:#0084ff; color:white !important;" >
          <i  class="fas fa-comment-dots pt-2" style="font-size:1.7em;"></i>
-
         <a href="https://m.me/eightmilestravel"  class="ctrlq fb-button" style="right: 70px;"></a>
     </div>
 
@@ -809,7 +808,8 @@ export default {
             document.documentElement.scrollTop = 0;
           }
         },
-  mounted() {
+  mounted() 
+  {
     var lcookie = Cookies.get("Uname");
     if (typeof lcookie === "undefined") {
       this.$router.push("/");
@@ -817,36 +817,24 @@ export default {
       this.$router.push("dashboard");
     }
     // -------------------- 8milesSettings ------------------------
-    axios
-      .get(
-        "http://localhost:5555/api/v1.0/setting/"
-      )
-      .then(response => {
-        console.log(response.data.data[0].logo)
+    // axios
+    //   .get(
+    //     "http://localhost:5555/api/v1.0/setting/"
+    //   )
+    //   .then(response => {
+    //     console.log(response.data.data[0].logo)
         
-        var imageLink = require("../assets/img/" + response.data.data[0].logo);
-         var imgEL = '<img src="' + imageLink + '" class="img-fluid img-leftlogo">'
-                   $('#8mileslogo').append(imgEL);
-       
-       
-       
-       
-       // for (var z = 0; z < 1; z++) {
-        //   var test = {};
-        //   test.logo = response.data.logo[z];
-        //   alert(test.logo);
-        //  var imageLink = require('../assets/img/8mileslogo.png');
-        //  var imgEL = '<img src="' + imageLink + '" class="img-fluid img-leftlogo">'
-        //            $('#8mileslogo').append(imgEL);
-        // }
-      });
+    //     var imageLink = require("../assets/img/" + response.data.data[0].logo);
+    //      var imgEL = '<img src="' + imageLink + '" class="img-fluid img-leftlogo">'
+    //                $('#8mileslogo').append(imgEL);
+    //   });
     // -------------------- Top Destination ------------------------
     axios
       .get(
         "https://raw.githubusercontent.com/clavearnel/philippines-region-province-citymun-brgy/master/json/refregion.json"
       )
       .then(response => {
-        for (var z = 0; z < response.data.RECORDS.length; z++) {
+        for (var z = 0; z < 6; z++) {
           var test = {};
           test.id = response.data.RECORDS[z].id;
           var imageLink = require("../assets/img/TopDestination/" + test.id +
@@ -861,7 +849,7 @@ export default {
         "https://raw.githubusercontent.com/clavearnel/philippines-region-province-citymun-brgy/master/json/refregion.json"
       )
       .then(response => {
-        for (var z = 0; z < response.data.RECORDS.length; z++) {
+        for (var z = 0; z < 3; z++) {
           var test = {};
           test.id = response.data.RECORDS[z].id;
           if (test.id == "1") {
@@ -985,16 +973,17 @@ export default {
         var btnsidebar = document.getElementById("btn-sidebar");
         var btntogglers = document.getElementById("btntoggler");
         var sidebars = document.getElementById("sidebar");
-        if (document.documentElement.scrollTop > 100) {
-
-          document.getElementById("return-to-topchat").style.marginRight ="4em";
+        if (document.documentElement.scrollTop > 100)
+         {
+          $('#return-to-topchat').css({"right": "4em"});
           navBar.classList.add("sticky-top");
           document.getElementById("return-to-top").style.display = "block";
           btnsidebar.classList.add("btn-sidebarscroll");
           btntogglers.classList.add("navbar-togglerscroll");
           sidebars.classList.add("sidebarscroll");
-        } else {
-          document.getElementById("return-to-topchat").style.marginRight ="0em";
+        } else 
+        {
+          $('#return-to-topchat').css({"right": "0em"});
           sidebars.classList.remove("sidebarscroll");
           navBar.classList.remove("sticky-top");
           btntogglers.classList.remove("navbar-togglerscroll");

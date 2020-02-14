@@ -30,7 +30,7 @@
             <b-button @click="logo" title="LOGO" style="margin-top:2em;">Logo</b-button>
             <b-button @click="Header">Header</b-button>
             <b-button @click="Cover">Cover</b-button>
-            <b-button>Destination</b-button>
+            <b-button @click="Destination">Destination</b-button>
             <b-button>Partners</b-button>
             <b-button>Services</b-button>
             <b-button>Promo</b-button>
@@ -87,7 +87,7 @@
  </div>
 
 
- <div id="Dragable_header" class="Dragable">
+ <div id="Dragable_header">
     <div id="Dragable_title_header" > 
             <div id="mydivheader">HEADER</div>
             <div class="Dragable_content_header">
@@ -133,10 +133,22 @@
               <input class="mt-4" style="margin-left:17%" id="getimg" type="file" name="pics" accept="image/*" @change="previewImage($event)" >
                <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
                   Change Color <br>
+                   <input type="color" id="fontbodycolorpicker" @change="updatebgbackground()">
+                  <label id="lbl_bodybgcolor">#000000</label>
             </div>
        </div>
  </div>
-
+  <div id="Dragable_Destination" class="Dragable">
+    <div id="Dragable_title_Destination" > 
+            <div id="mydivheader">Destination</div>
+            <div class="Dragable_content_Destination">
+               Add Image <br>
+              <input class="mt-4" style="margin-left:17%" id="getimg" type="file" name="pics" accept="image/*" @change="previewImage($event)" >
+               <div style="width:100%; height:1px; border-top:1px solid #888;"></div>
+                 
+            </div>
+       </div>
+ </div>
  
  <!----------------------   Cover Pic   ------------------------ -->
  <div class="text-center">
@@ -684,7 +696,11 @@ export default {
     {
        $( "#parallax" ).css( "width", this.sliderwidth_cover +"%" );
     },
-   
+   updatebgbackground()
+   {
+       $("#lbl_bodybgcolor").text($("#fontbodycolorpicker").val());
+       $( "body" ).css( "background-color", $("#fontbodycolorpicker").val());
+   },
     previewImage: function(event) 
     {
             if (event.target.files && event.target.files[0]) 
@@ -696,9 +712,6 @@ export default {
                     $('#app1').css("background-image","url(" + e.target.result + ")");
                 }
             }
-            $("#getimg").change(function () {
-                    readURL(this);
-          });
     },
     font_header: function(event) {
          console.log(this.selected);
@@ -725,14 +738,24 @@ export default {
     },
       Cover()
     {
+      document.getElementById("Dragable_Destination").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
         document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
         document.getElementById("Dragable_Body").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_cover").classList.toggle("Dragable_Logo_show");
        
     },
+    Destination()
+    {
+        document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_Body").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_cover").classList.remove("Dragable_Logo_show");
+        document.getElementById("Dragable_Destination").classList.toggle("Dragable_Logo_show");
+    },
     Header()
     {
+      document.getElementById("Dragable_Destination").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_cover").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_Body").classList.remove("Dragable_Logo_show");
@@ -740,6 +763,7 @@ export default {
     },
     logo()
     {
+      document.getElementById("Dragable_Destination").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_cover").classList.remove("Dragable_Logo_show");
         document.getElementById("Dragable_Body").classList.remove("Dragable_Logo_show");
          document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
@@ -747,6 +771,7 @@ export default {
     },
      Body()
     {
+      document.getElementById("Dragable_Destination").classList.remove("Dragable_Logo_show");
        document.getElementById("Dragable_cover").classList.remove("Dragable_Logo_show");
         document.getElementById("Dragable_header").classList.remove("Dragable_Logo_show");
          document.getElementById("Dragable_logo").classList.remove("Dragable_Logo_show");
@@ -800,15 +825,9 @@ export default {
          nh.classList.toggle("Navbarleft-home");
         }
        },
-                mounted() 
-                {
-
-
-
+     mounted() 
+          {
                       $("#HOME").addClass("liactive");  
-
-
-
   // -------------------- Cookies for login ------------------------
     var Uname = Cookies.get("Uname");
     if (typeof Uname === "undefined") 
@@ -889,27 +908,33 @@ export default {
     {
         window.addEventListener("scroll", function() 
         {
-                    if (document.documentElement.scrollTop > 0) {
+                    if (document.documentElement.scrollTop > 0) 
+                    {
                       $(".linavbar").removeClass("liactive");
                       document.getElementById("HOME").classList.add("liactive");
                     }
-                    if (document.documentElement.scrollTop > 440) {
+                    if (document.documentElement.scrollTop > 440) 
+                    {
                       $(".linavbar").removeClass("liactive");
                       document.getElementById("DESTINATION").classList.add("liactive");
                     }
-                    if (document.documentElement.scrollTop > 1100) {
+                    if (document.documentElement.scrollTop > 1100) 
+                    {
                       $(".linavbar").removeClass("liactive");
                       document.getElementById("PARTNERS").classList.add("liactive");
                     }
-                    if (document.documentElement.scrollTop > 1450) {
+                    if (document.documentElement.scrollTop > 1450) 
+                    {
                       $(".linavbar").removeClass("liactive");
                       document.getElementById("SERVICES").classList.add("liactive");
                     }
-                    if (document.documentElement.scrollTop > 2000) {
+                    if (document.documentElement.scrollTop > 2000) 
+                    {
                       $(".linavbar").removeClass("liactive");
                       document.getElementById("ABOUT").classList.add("liactive");
                     }
-                    if (document.documentElement.scrollTop > 2700) {
+                    if (document.documentElement.scrollTop > 2700) 
+                    {
                       $(".linavbar").removeClass("liactive");
                       document.getElementById("CONTACT").classList.add("liactive");
                     }
@@ -926,15 +951,19 @@ export default {
                       btnsidebar.classList.add("btn-sidebarscroll");
                       btntogglers.classList.add("navbar-togglerscroll");
                       sidebars.classList.add("sidebarscroll");
-                      document.getElementById("Dragable_logo").style.marginTop = "13.8em";
-                      document.getElementById("Dragable_header").style.marginTop = "15.2em";
-                       document.getElementById("Dragable_cover").style.marginTop = "17.2em";
+                      $('#Dragable_logo').css({"top": "10.3em"});
+                      $('#Dragable_header').css({"top": "10.4em"});
+                      $('#Dragable_cover').css({"top": "10.0em"});
+                      $('#Dragable_Body').css({"top": "10.0em"});
+                      
+                      
                     } 
                     else 
                     {
-                      document.getElementById("Dragable_cover").style.marginTop = "7.2em";
-                      document.getElementById("Dragable_logo").style.marginTop = "3.5%";
-                      document.getElementById("Dragable_header").style.marginTop = "5.5%";
+                      $('#Dragable_logo').css({"top": "13%"});
+                      $('#Dragable_header').css({"top": "13.8%"});
+                      $('#Dragable_cover').css({"top": "6.2em"});
+                      $('#Dragable_Body').css({"top": "6.0em"});
                       sidebars.classList.remove("sidebarscroll");
                       navBar.classList.remove("sticky-top");
                       btntogglers.classList.remove("navbar-togglerscroll");
