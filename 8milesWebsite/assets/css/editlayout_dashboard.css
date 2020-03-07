@@ -63,7 +63,14 @@
     position: fixed;
     display: none;
 }
-
+#Dragable_Destination {
+    margin-left: 6.5%;
+    transition: all ease 1s;
+    opacity: 0;
+    margin-top: 20.5%;
+    position: fixed;
+    display: none;
+}
 .Dragable_content_cover {
     background-color: white !important;
     height: 15em;
@@ -76,14 +83,22 @@
 
 .Dragable_content_Body {
     background-color: white !important;
-    height: 15em;
+    height: 12em;
     width: 20em;
     position: absolute;
     text-align: center;
     border-bottom-right-radius: 0.5em;
     border-bottom-left-radius: 0.5em;
 }
-
+.Dragable_content_Destination {
+    background-color: white !important;
+    height: 12em;
+    width: 20em;
+    position: absolute;
+    text-align: center;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
 .Dragable_title_cover {
     height: 17.8em;
     position: absolute;
@@ -105,7 +120,16 @@
     border-bottom-left-radius: 0.5em;
     display: block !important;
 }
-
+.Dragable_title_Destination {
+    height: 17.8em;
+    position: absolute;
+    box-shadow: 3px 0px 4px 1px rgb(24, 23, 23);
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    display: block !important;
+}
 #mydivheader {
     padding: 10px;
     cursor: move;

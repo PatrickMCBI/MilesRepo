@@ -27,14 +27,14 @@
                 <input type="text" id="lname" placeholder="Lastname">
                 <input type="button" value="Save" @click="save" >
                 <br><br>
-                Person List
+                Person Lists
                 <div style=" width:50%;  margin-left:2em;">
               <table style="width:100%; " id="table">
                 <tr style="border-bottom:1px solid red; height:0.1em !important; text-align:center; background-color:#4ECB4A; color:#eeeeee;">
                   <th>No.</th>
                   <th>Firstname</th>
                   <th>Lastname</th> 
-                    <th>DELETE</th>
+                  <th>DELETE</th>
                 </tr>
               </table>
             </div>
@@ -57,7 +57,7 @@ export default {
     save()
     {
       var res = (parseInt(this.lastnum) +1);
-      var imgEL = '<tr ><td style="border:1px solid red;">'+ res +'</td><td style="border:1px solid red;">'+$('#fname').val()+'</td><td style="border:1px solid red;">'+$('#lname').val()+'</td></tr>';
+      var imgEL = '<tr ><td style="border:1px solid red;">'+ res +'</td><td style="border:1px solid red;">'+$('#fname').val()+'</td><td style="border:1px solid red;">'+$('#lname').val()+'</td><td style="border:1px solid red; text-align:center;"><input type="button" style="color:red" value="X" @click="delete"></td></tr>';
      this.lastnum =res;
      $("#table").append(imgEL);
          
@@ -66,10 +66,6 @@ export default {
     {
        alert('delete');
     }
-    //   delete: function(event) {
-    //     alert('delete');
-    //      console.log(event.target);
-    // }
   },
   mounted()
   {
@@ -78,7 +74,6 @@ export default {
               var imgEL = '<tr><td style="border:1px solid red;" class="num" id="">'+z+'</td><td style="border:1px solid red;">'+z+'</td><td style="border:1px solid red;">'+z+'</td><td style="border:1px solid red; text-align:center;"><input type="button" style="color:red" value="X" onclick="delete()"></td></tr></tr>'; 
               $("#table").append(imgEL);
                this.lastnum = z;
-         
          } 
   }
 }
