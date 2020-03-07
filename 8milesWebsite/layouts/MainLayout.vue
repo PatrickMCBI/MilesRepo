@@ -817,9 +817,8 @@ export default {
       this.$router.push("dashboard");
     }
     // -------------------- 8milesSettings ------------------------
-    axios
-      .get(
-        "http://localhost:5555/api/v1.0/setting/"
+    axios.get(
+        "http://localhost:5555/api/v1.0/settings/"
       )
       .then(response => {
         console.log(response.data.data[0].logo)

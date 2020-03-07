@@ -20,9 +20,11 @@ def new_user():
     formData = request.get_json()
     email = formData['email']
     pasw = formData['pwd']
+    usertype = formData['usrtypeID']
+    print("------  ", formData)
     is_exist = Users.query.filter_by(email=email).first()
     if not is_exist:
-        query = "CALL spInserUser('" +email+ "','" +escapestring(pasw)+ "')"
+        query = "CALL spInserUser('" +email+ "','" +escapestring(pasw)+ "','" +usertype+ "')"
         try:
             db_session.execute(query)
             status = Status('200', 'Successfully Added New User!')

@@ -1,5 +1,5 @@
 <template >
-  <div id="app1">
+  <div id="app1" :style="'background-image: url('+Background+') !important'">
 
     
 
@@ -611,12 +611,17 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import $ from "jquery";
 import VueGallery from "vue-gallery-slideshow";
+import imgBackground from '@/assets/img/topimg.jpg';
+
+
 export default {
   name: "app1",
   components: { gallery: VueGallery, CustomSlider },
+  
   data() 
   {
     return {
+      Background: imgBackground,
       Update_width:5,
       Update_bg_Header:"",
       Update_font_Header:"",
@@ -643,6 +648,7 @@ export default {
   },
   methods: 
   {
+    
      Hometab()
     {
       document.querySelector('#app1').scrollIntoView({ behavior: 'smooth' });
@@ -688,7 +694,7 @@ export default {
           
                   var fileName = event.target.files[0].name;
                   alert('The file "' + fileName +  '" has been selected.');
-                   $( "#app1" ).css( "background-image", url ('..'+'/'+fileName) +" !important" );
+                  //  $( "#app1" ).css( "background-image", url ('..'+'/'+fileName) +" !important" );
            
     },
     font_header: function(event) {
@@ -712,7 +718,7 @@ export default {
     },
     updatebackground()
     {
-          $( "#app1" ).css("background-image", this.Update_font_Header +"!important;");
+          // $( "#app1" ).css("background-image", this.Update_font_Header +"!important;");
     },
       Cover()
     {

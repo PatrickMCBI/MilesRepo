@@ -8,6 +8,7 @@ from flask_sqlalchemy import get_debug_queries
 from routes.usersroute import usersapi
 from routes.milesSettingRoute import settingapi
 from routes.colorCodeRoute import colorCodeApi
+from routes.destinationRoute import destinationapi
 
 
 
@@ -26,6 +27,7 @@ wsgi_app = app.wsgi_app
 app.register_blueprint(usersapi, url_prefix=api_version)
 app.register_blueprint(settingapi, url_prefix=api_version)
 app.register_blueprint(colorCodeApi, url_prefix=api_version)
+app.register_blueprint(destinationapi, url_prefix=api_version)
 
 
 if __name__ == '__main__':

@@ -13,10 +13,10 @@ usersapi = Blueprint('usersapi', __name__)
 def user_login():
     
     json_input = request.json 
+    print("------ xxxx ", json_input)
     user = UserJWT(json_input)
-    print("y-y -------  user ", user)
-    # res = client_genJWT.client_jwtGenData(client)
-    return json_input
+    res = UserJWT.UserJWTData(user)
+    return res
 
 @usersapi.route('users/new', methods=['POST'])
 def create_user():
@@ -25,11 +25,13 @@ def create_user():
 @usersapi.route('users/', methods=['GET'])
 #@token_required
 def get_users():
+    #def get_users(current_user):
     return get_all_users()
 
 @usersapi.route('users/<id>', methods=['GET', 'POST'])
-# @token_required
+#@token_required
 def get_single_user_and_update(id):
+    #def get_single_user_and_update(current_user,id):
     if request.method == 'POST':
         return update_user_details(id)
     else:

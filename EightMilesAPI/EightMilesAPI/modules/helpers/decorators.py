@@ -22,6 +22,7 @@ def token_required(f):
         tok   = str.replace(str(token),' ','') 
         try:
             data = jwt.decode(tok,'SECRETNI', algorithms=['HS256'])
+            print("--------------- decode", data)
         except:
             return Status('404', 'Token Not Found!').status_code()
         return f(current_user, *args, **kwargs)

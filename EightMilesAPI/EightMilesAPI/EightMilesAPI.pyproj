@@ -11,14 +11,14 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <LaunchProvider>Web launcher</LaunchProvider>
-    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <WebBrowserUrl>http://127.0.0.1</WebBrowserUrl>
     <OutputPath>.</OutputPath>
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>EightMilesAPI</Name>
     <RootNamespace>EightMilesAPI</RootNamespace>
     <InterpreterId>MSBuild|api|$(MSBuildProjectFullPath)</InterpreterId>
     <WebBrowserPort>5555</WebBrowserPort>
-    <Environment>Python36_64</Environment>
+    <Environment>api</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +36,9 @@
     <Compile Include="modules\controller\colorCodeController.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="modules\controller\destinationController.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="modules\controller\milesSettingController.py">
       <SubType>Code</SubType>
     </Compile>
@@ -43,6 +46,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes\colorCodeRoute.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\destinationRoute.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="routes\milesSettingRoute.py">

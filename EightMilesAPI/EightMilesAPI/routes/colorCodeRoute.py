@@ -15,7 +15,7 @@ def get_all_colorCode():
     return get_all()
 
 @colorCodeApi.route('colorCodeLast/', methods=['GET'])
-#@token_required
+@token_required
 def get_colorCode():
     return get_single_color()
 

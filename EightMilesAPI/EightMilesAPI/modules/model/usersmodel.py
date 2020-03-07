@@ -12,7 +12,8 @@ class Users(Base):
     user_id = Column(Integer, primary_key=True)
     email   = Column(String(255))
     pwd     = Column(String(255))
-    
+    usertypeID = Column(String(255))
+
     #details = relationship('UserDetails', backref='details')
 
 class UserType(Base):
